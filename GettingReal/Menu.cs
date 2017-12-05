@@ -8,18 +8,21 @@ namespace GettingReal
 {
     public class Menu
     {
+        Controller controller = new Controller();
         public void ShowMenu()
         {
-            Console.WriteLine("Velkommen! Du har nu følgende valgmuligheder.");
+            Console.WriteLine("Velkommen! Du har nu følgende valgmuligheder. \n");
             Console.WriteLine("1. Søg efter medarbejder.");
             Console.WriteLine("2. Opret Ny medarbejder.");
             string menu_answer = Console.ReadLine();
 
             switch(menu_answer)
             {
-                case 1: Console.WriteLine("Søg efter medarbejder.");
+                case "1": Console.WriteLine("Søg efter medarbejder.");
+                    controller.Søg();
                     break;
-                case 2: Console.WriteLine("Opret medarbejder");
+                case "2": Console.WriteLine("Opret medarbejder");
+                    controller.Opret();
                     break;
                 default: 
                     Console.Clear();

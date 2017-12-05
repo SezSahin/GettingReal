@@ -17,7 +17,7 @@ namespace GettingReal
         private void Run()
         {
             Menu menu = new Menu();
-            menu.Show();
+            menu.ShowMenu();
         }
     }
 }

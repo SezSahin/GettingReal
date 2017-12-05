@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace GettingReal
 {
     class Login
     {
+        private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
+
         private string username;
         private string password;
         private bool usersuccessful;
@@ -15,6 +18,7 @@ namespace GettingReal
 
         public Login(string user, string pass)
         {
+            
         }
 
         public bool CheckUsername(string user)
@@ -39,3 +43,5 @@ namespace GettingReal
         }
     }
 }
+
+
