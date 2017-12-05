@@ -17,9 +17,9 @@ namespace GettingReal
 
             switch(menu_answer)
             {
-                case 1: Console.WriteLine("Søg efter medarbejder.");
+                case "1": Console.WriteLine("Søg efter medarbejder.");
                     break;
-                case 2: Console.WriteLine("Opret medarbejder");
+                case "2": Console.WriteLine("Opret medarbejder");
                     break;
                 default: 
                     Console.Clear();
