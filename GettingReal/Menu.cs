@@ -19,7 +19,7 @@ namespace GettingReal
             switch(menu_answer)
             {
                 case "1": Console.WriteLine("Søg efter medarbejder.");
-                   // controller.Søg();
+                    controller.Søg();
                     break;
                 case "2": Console.WriteLine("Opret medarbejder");
                     controller.Opret();

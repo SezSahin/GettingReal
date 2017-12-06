@@ -11,9 +11,55 @@ namespace GettingReal
     class Controller
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
-        public void Søg(int id, string navn, string adresse, string cpr, string email, double løn, double skat)
+        public void Søg(/*int id, string navn, string adresse, string cpr, string email, double løn, double skat*/)
         {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spSøg", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Indtast ID \n");
+                    cmd.Parameters.Add(new SqlParameter("@ID", Console.ReadLine()));
+                    Console.WriteLine("Indtast Brugernavn \n");
+                    cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast Fornavn \n");
+                    cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast Efternavn \n");
+                    cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast Telefon nummer \n");
+                    cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
 
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader["ID"].ToString();
+                            string UserName = reader["Brugernavn"].ToString();
+                            string FirstName = reader["Navn"].ToString();
+                            string LastName = reader["Efternavn"].ToString();
+                            string Address = reader["Addresse"].ToString();
+                            string AddressL2 = reader["Addresse_l2"].ToString();
+                            string AddressCity = reader["Addresse_by"].ToString();
+                            string AddressZip = reader["Addresse_postnr"].ToString();
+                            string PhoneNumber = reader["Tlf"].ToString();
+                            string SocialSecurity = reader["CPR_nr"].ToString();
+                            string AccountNumber = reader["konto_nr"].ToString();
+                            string RegNumber = reader["reg_nr"].ToString();
+                            string DepartmentID = reader["AfdelingsID"].ToString();
+                            Console.WriteLine("\n Medarbejder:");
+                            Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID);
+                        }
+                    }
+                }
+                catch(SqlException e)
+                {
+                    Console.WriteLine("Ugyldig information" + e.Message);
+                }
+            }
         }
         public void Opret()
         {
@@ -98,11 +144,11 @@ namespace GettingReal
                     Console.WriteLine("Indtast efternavn \n \n");
                     cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
                     Console.WriteLine("Indtast ny adresse \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
                     Console.WriteLine("Indtast adresse linje 2 \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Adresse_l2", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
                     Console.WriteLine("Indtast by \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Adresse_by", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
                     Console.WriteLine("Indtast nyt telefon nummer \n \n");
                     cmd.Parameters.Add(new SqlParameter("@Telef", Console.ReadLine()));
                     Console.WriteLine("Indtast ny e-mail \n \n");
