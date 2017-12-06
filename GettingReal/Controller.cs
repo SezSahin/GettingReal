@@ -24,18 +24,17 @@ namespace GettingReal
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spOpretBruger", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                Console.WriteLine("Indtast Brugernavn \n \n");
-                cmd.Parameters.Add(new SqlParameter("@UserName", Console.ReadLine()));
-                Console.WriteLine("Indtast Pasword \n \n");
+                Console.WriteLine("Indtast Brugernavn \n");
+                cmd.Parameters.Add(new SqlParameter("@BrugerNavn", Console.ReadLine()));
+                Console.WriteLine("Indtast Pasword \n");
                 cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                
                 Console.Clear();
                 
                 cmd.ExecuteNonQuery();
                 }
-                catch
+                catch(SqlException e)
                 {
-                    Console.WriteLine();
+                     Console.WriteLine("UPS " + e.Message);
                 }
 
             }
