@@ -56,7 +56,33 @@ namespace GettingReal
         }
         public void Rediger()
         {
-           
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spRediger", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Indtast fornavn \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast efternavn \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast ny adresse \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
+                    Console.WriteLine("Indtast adresse linje 2 \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Adresse_l2", Console.ReadLine()));
+                    Console.WriteLine("Indtast by \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Adresse_by", Console.ReadLine()));
+                    Console.WriteLine("Indtast nyt telefon nummer \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Telef", Console.ReadLine()));
+                    Console.WriteLine("Indtast ny e-mail \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@mail", Console.ReadLine()));
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Prøv igen" + e.Message);
+                }
+            }
         }
         public void Gemt(SqlCommand cmd)
         {
