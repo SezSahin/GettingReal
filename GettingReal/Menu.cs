@@ -13,7 +13,7 @@ namespace GettingReal
         {
             Console.WriteLine("Velkommen! Du har nu følgende valgmuligheder. \n");
             Console.WriteLine("1. Søg efter medarbejder.");
-            Console.WriteLine("2. Opret Ny medarbejder.");
+            Console.WriteLine("2. Opret Ny medarbejder. \n");
             string menu_answer = Console.ReadLine();
 
             switch(menu_answer)

@@ -10,7 +10,6 @@ namespace GettingReal
     class Controller
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
-        Menu menu = new Menu();
         public void Søg(int id, string navn, string adresse, string cpr, string email, double løn, double skat)
         {
 
@@ -22,46 +21,51 @@ namespace GettingReal
             {
                 try
                 {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("spOpretBruger", con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                Console.WriteLine("Indtast Brugernavn \n");
-                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
-                Console.WriteLine("Indtast Pasword \n");
-                cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                Console.WriteLine("Indtast Navn og mellem navn \n");
-                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
-                Console.WriteLine("Indtast Efternavn \n");
-                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
-                Console.WriteLine("Indtast Addresselinje 1 \n");
-                cmd.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
-                Console.WriteLine("Indtast Addresselinje 2 (hvis der ikke er noget at skrive, skriv pik)\n");
-                cmd.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
-                Console.WriteLine("Indtast Addresse By\n");
-                cmd.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
-                Console.WriteLine("Indtast Post nr.\n");
-                cmd.Parameters.Add(new SqlParameter("@Addresse_postnr", Console.ReadLine()));
-                Console.WriteLine("Indtast Telefon nr.\n");
-                cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
-                Console.WriteLine("Indtast CPR \n");
-                cmd.Parameters.Add(new SqlParameter("@CPR_nr", Console.ReadLine()));
-                Console.WriteLine("Indtast Konto nr. \n");
-                cmd.Parameters.Add(new SqlParameter("@konto_nr", Console.ReadLine()));
-                Console.WriteLine("Indtast Reg nr. \n");
-                cmd.Parameters.Add(new SqlParameter("@reg_nr", Console.ReadLine()));
-                Console.WriteLine("Indtast AfdelingsID \n");
-                cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spOpretBruger", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Indtast Brugernavn \n");
+                    cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast Pasword \n");
+                    cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+                    Console.WriteLine("Indtast Navn og mellem navn \n");
+                    cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                    Console.WriteLine("Indtast Efternavn \n");
+                    cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                    Console.WriteLine("Indtast Addresselinje 1 \n");
+                    cmd.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
+                    Console.WriteLine("Indtast Addresselinje 2 (hvis der ikke er noget at skrive, skriv pik)\n");
+                    cmd.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
+                    Console.WriteLine("Indtast Addresse By\n");
+                    cmd.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
+                    Console.WriteLine("Indtast Post nr.\n");
+                    cmd.Parameters.Add(new SqlParameter("@Addresse_postnr", Console.ReadLine()));
+                    Console.WriteLine("Indtast Telefon nr.\n");
+                    cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
+                    Console.WriteLine("Indtast CPR \n");
+                    cmd.Parameters.Add(new SqlParameter("@CPR_nr", Console.ReadLine()));
+                    Console.WriteLine("Indtast Konto nr. \n");
+                    cmd.Parameters.Add(new SqlParameter("@konto_nr", Console.ReadLine()));
+                    Console.WriteLine("Indtast Reg nr. \n");
+                    cmd.Parameters.Add(new SqlParameter("@reg_nr", Console.ReadLine()));
+                    Console.WriteLine("Indtast AfdelingsID \n");
+                    cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
 
 
                     Console.Clear();
                 
-                cmd.ExecuteNonQuery();
-                Console.Clear();
+                    //cmd.ExecuteNonQuery();
+
+                    Console.Clear();
+
                     Console.WriteLine("Gem? Ja = y|| Nej = n ");
+
                     var input = Console.ReadKey(true).Key;
+
+                    Menu menu = new Menu();
                     switch (input)
                     {
-
+                        
                         case ConsoleKey.Y: Gemt(cmd); menu.ShowMenu(); break;
 
                         case ConsoleKey.N: menu.ShowMenu(); break;
@@ -71,15 +75,13 @@ namespace GettingReal
                             break;
 
                     }
-        
+
                 }
                 catch(SqlException e)
                 {
                      Console.WriteLine("UPS " + e.Message);
                 }
-
             }
-
         }
         public void Rediger()
         {
@@ -104,6 +106,10 @@ namespace GettingReal
                     cmd.Parameters.Add(new SqlParameter("@Telef", Console.ReadLine()));
                     Console.WriteLine("Indtast ny e-mail \n \n");
                     cmd.Parameters.Add(new SqlParameter("@mail", Console.ReadLine()));
+
+                    Console.Clear();
+
+                    cmd.ExecuteNonQuery();
                 }
                 catch (SqlException e)
                 {
