@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace GettingReal
 {
@@ -121,6 +122,7 @@ namespace GettingReal
         {
             cmd.ExecuteNonQuery();
             Console.WriteLine("Gemt!");
+            Thread.Sleep(2000);
         }
         public void Slet()
         {
