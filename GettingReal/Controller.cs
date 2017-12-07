@@ -54,6 +54,19 @@ namespace GettingReal
                             Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID);
                         }
                     }
+
+                    Console.WriteLine("Tryk 'Enter' for at fortsætte");
+                    var input = Console.ReadKey(true).Key;
+
+                    Menu menu = new Menu();
+                    switch (input)
+                    {
+                        case ConsoleKey.Enter: menu.ShowMenu(); break;
+
+                        default:
+                            Console.WriteLine("Default case");
+                            break;
+                    }                    
                 }
                 catch(SqlException e)
                 {
@@ -172,7 +185,31 @@ namespace GettingReal
         }
         public void Slet()
         {
+            using(SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spSletBruger", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Slet bruger med id:");
+                    cmd.Parameters.Add(new SqlParameter("@id", Console.ReadLine()));
+                    Console.WriteLine("Slet bruger med fornavn:");
+                    cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
+                    Console.WriteLine("Slet bruger med efternavn:");
+                    cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
 
+                    Console.Clear();
+
+                    Console.WriteLine("Medarbejder slettet! \n");
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch(SqlException e)
+                {
+                    Console.WriteLine("Dårligt lavet.." + e.Message);
+                }
+            }
         }
     }
 }
