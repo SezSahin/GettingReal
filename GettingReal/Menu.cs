@@ -17,6 +17,8 @@ namespace GettingReal
             Console.WriteLine("2. Opret Ny medarbejder.");
             Console.WriteLine("3. Rediger medarbejder.");
             Console.WriteLine("4. Slet medarbejder. \n");
+            Console.WriteLine("0. Luk konsol \n");
+
             string menu_answer = Console.ReadLine();
 
             switch(menu_answer)
@@ -32,6 +34,8 @@ namespace GettingReal
                     break;
                 case "4": Console.WriteLine("Slet medarbejder");
                     controller.Slet();
+                    break;
+                case "0":
                     break;
                 default: 
                     Console.Clear();

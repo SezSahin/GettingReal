@@ -30,6 +30,8 @@ namespace GettingReal
                     cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
                     Console.WriteLine("Indtast Telefon nummer \n");
                     cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
+                    Console.WriteLine("Indtast e-mail \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -46,12 +48,13 @@ namespace GettingReal
                             string AddressCity = reader["Addresse_by"].ToString();
                             string AddressZip = reader["Addresse_postnr"].ToString();
                             string PhoneNumber = reader["Tlf"].ToString();
+                            string Email = reader["Email"].ToString();
                             string SocialSecurity = reader["CPR_nr"].ToString();
                             string AccountNumber = reader["konto_nr"].ToString();
                             string RegNumber = reader["reg_nr"].ToString();
                             string DepartmentID = reader["AfdelingsID"].ToString();
                             Console.WriteLine("\n Medarbejder:");
-                            Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID);
+                            Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID);
                         }
                     }
 
@@ -70,7 +73,7 @@ namespace GettingReal
                 }
                 catch(SqlException e)
                 {
-                    Console.WriteLine("Ugyldig information" + e.Message);
+                    Console.WriteLine("Ugyldig information" + e.Message + "\n");
                 }
             }
         }
@@ -102,6 +105,8 @@ namespace GettingReal
                     cmd.Parameters.Add(new SqlParameter("@Addresse_postnr", Console.ReadLine()));
                     Console.WriteLine("Indtast Telefon nr.\n");
                     cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
+                    Console.WriteLine("Indtast e-mail \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
                     Console.WriteLine("Indtast CPR \n");
                     cmd.Parameters.Add(new SqlParameter("@CPR_nr", Console.ReadLine()));
                     Console.WriteLine("Indtast Konto nr. \n");
@@ -139,7 +144,7 @@ namespace GettingReal
                 }
                 catch(SqlException e)
                 {
-                     Console.WriteLine("UPS " + e.Message);
+                     Console.WriteLine("UPS " + e.Message + "\n");
                 }
             }
         }
@@ -165,7 +170,7 @@ namespace GettingReal
                     Console.WriteLine("Indtast nyt telefon nummer \n \n");
                     cmd.Parameters.Add(new SqlParameter("@Telef", Console.ReadLine()));
                     Console.WriteLine("Indtast ny e-mail \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@mail", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
 
                     Console.Clear();
 
@@ -173,7 +178,7 @@ namespace GettingReal
                 }
                 catch (SqlException e)
                 {
-                    Console.WriteLine("Prøv igen" + e.Message);
+                    Console.WriteLine("Prøv igen" + e.Message + "\n");
                 }
             }
         }
@@ -207,7 +212,7 @@ namespace GettingReal
                 }
                 catch(SqlException e)
                 {
-                    Console.WriteLine("Dårligt lavet.." + e.Message);
+                    Console.WriteLine("Dårligt lavet.." + e.Message + "\n");
                 }
             }
         }
