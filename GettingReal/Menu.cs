@@ -23,16 +23,16 @@ namespace GettingReal
 
             switch(menu_answer)
             {
-                case "1": Console.WriteLine("Søg efter medarbejder.");
-                    controller.Søg();
+                case "1": Console.WriteLine("Søg efter medarbejder. \n");
+                    Søg();
                     break;
-                case "2": Console.WriteLine("Opret medarbejder");
+                case "2": Console.WriteLine("Opret medarbejder \n");
                     controller.Opret();
                     break;
-                case "3": Console.WriteLine("Rediger medarbejder");
+                case "3": Console.WriteLine("Rediger medarbejder \n");
                     controller.Rediger();
                     break;
-                case "4": Console.WriteLine("Slet medarbejder");
+                case "4": Console.WriteLine("Slet medarbejder \n");
                     controller.Slet();
                     break;
                 case "0":
@@ -44,8 +44,23 @@ namespace GettingReal
                     break;
             }
         }
-        public void Show()
+        public void Søg()
         {
+            Console.WriteLine("\nIndtast ID \n");
+            string id = (Console.ReadLine());
+            Console.WriteLine("\nIndtast Brugernavn \n");
+            string brugernavn = Console.ReadLine();
+            Console.WriteLine("\nIndtast Fornavn \n");
+            string fornavn = Console.ReadLine();
+            Console.WriteLine("\nIndtast Efternavn \n");
+            string efternavn = Console.ReadLine();
+            Console.WriteLine("\nIndtast Telefon Nummer \n");
+            string telefon = Console.ReadLine();
+            Console.WriteLine("\nIndtast E-mail \n");
+            string email = Console.ReadLine();
+
+            controller.Søg(id, brugernavn, fornavn, efternavn, telefon, email);
+
 
         }
     }

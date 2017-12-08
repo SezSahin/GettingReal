@@ -11,27 +11,46 @@ namespace GettingReal
     class Controller
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
-        public void Søg(/*int id, string navn, string adresse, string cpr, string email, double løn, double skat*/)
+        public void Søg(string id, string brugernavn, string fornavn, string efternavn, string telefon, string email)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
                 {
+                    if(id == "")
+                    {
+                        id = null;
+                    }
+                    if(brugernavn == "")
+                    {
+                        brugernavn = null;
+                    }
+                    if(fornavn == "")
+                    {
+                        fornavn = null;
+                    }
+                    if(efternavn == "")
+                    {
+                        efternavn = null;
+                    }
+                    if(telefon == "")
+                    {
+                        telefon = null;
+                    }
+                    if(email == "")
+                    {
+                        email = null;
+                    }
+
                     con.Open();
                     SqlCommand cmd = new SqlCommand("spSøg", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    Console.WriteLine("Indtast ID \n");
-                    cmd.Parameters.Add(new SqlParameter("@ID", Console.ReadLine()));
-                    Console.WriteLine("Indtast Brugernavn \n");
-                    cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
-                    Console.WriteLine("Indtast Fornavn \n");
-                    cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
-                    Console.WriteLine("Indtast Efternavn \n");
-                    cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
-                    Console.WriteLine("Indtast Telefon nummer \n");
-                    cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
-                    Console.WriteLine("Indtast e-mail \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@ID", id));
+                    cmd.Parameters.Add(new SqlParameter("@Brugernavn", brugernavn));
+                    cmd.Parameters.Add(new SqlParameter("@Fornavn", fornavn));
+                    cmd.Parameters.Add(new SqlParameter("@Efternavn", efternavn));
+                    cmd.Parameters.Add(new SqlParameter("@Tlf", telefon));
+                    cmd.Parameters.Add(new SqlParameter("@Email", email));
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -97,7 +116,7 @@ namespace GettingReal
                     cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
                     Console.WriteLine("Indtast Addresselinje 1 \n");
                     cmd.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
-                    Console.WriteLine("Indtast Addresselinje 2 (hvis der ikke er noget at skrive, skriv pik)\n");
+                    Console.WriteLine("Indtast Addresselinje 2 \n");
                     cmd.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
                     Console.WriteLine("Indtast Addresse By\n");
                     cmd.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
@@ -155,22 +174,34 @@ namespace GettingReal
                 try
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("spRediger", con);
+                    SqlCommand cmd = new SqlCommand("spOpdater", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Indtast nyt ID \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Id", Console.ReadLine()));
+                    Console.WriteLine("Indtast nyt brugernavn \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
                     Console.WriteLine("Indtast fornavn \n \n");
                     cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
                     Console.WriteLine("Indtast efternavn \n \n");
                     cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
                     Console.WriteLine("Indtast ny adresse \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
                     Console.WriteLine("Indtast adresse linje 2 \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Adressel2", Console.ReadLine()));
                     Console.WriteLine("Indtast by \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@By", Console.ReadLine()));
+                    Console.WriteLine("Indtast ny post nummer \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Postnr", Console.ReadLine()));
                     Console.WriteLine("Indtast nyt telefon nummer \n \n");
-                    cmd.Parameters.Add(new SqlParameter("@Telef", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
                     Console.WriteLine("Indtast ny e-mail \n \n");
                     cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
+                    Console.WriteLine("Indtast nyt konto nummer \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Konto", Console.ReadLine()));
+                    Console.WriteLine("Indtast nyt registrerings nummer \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@Reg", Console.ReadLine()));
+                    Console.WriteLine("Indtast nyt afdelings ID \n \n");
+                    cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
 
                     Console.Clear();
 
@@ -197,11 +228,11 @@ namespace GettingReal
                     con.Open();
                     SqlCommand cmd = new SqlCommand("spSletBruger", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    Console.WriteLine("Slet bruger med id:");
+                    Console.WriteLine("\nSlet bruger med id: \n");
                     cmd.Parameters.Add(new SqlParameter("@id", Console.ReadLine()));
-                    Console.WriteLine("Slet bruger med fornavn:");
+                    Console.WriteLine("\nSlet bruger med fornavn: \n");
                     cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
-                    Console.WriteLine("Slet bruger med efternavn:");
+                    Console.WriteLine("\nSlet bruger med efternavn: \n");
                     cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
 
                     Console.Clear();
@@ -209,6 +240,19 @@ namespace GettingReal
                     Console.WriteLine("Medarbejder slettet! \n");
 
                     cmd.ExecuteNonQuery();
+
+                    Console.WriteLine("Tryk 'Enter' for at fortsætte");
+                    var input = Console.ReadKey(true).Key;
+
+                    Menu menu = new Menu();
+                    switch (input)
+                    {
+                        case ConsoleKey.Enter: menu.ShowMenu(); break;
+
+                        default:
+                            Console.WriteLine("Default case");
+                            break;
+                    }
                 }
                 catch(SqlException e)
                 {
