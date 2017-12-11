@@ -46,20 +46,10 @@ namespace GettingReal
         }
         public void Søg()
         {
-            Console.WriteLine("\nIndtast ID \n");
-            string id = (Console.ReadLine());
-            Console.WriteLine("\nIndtast Brugernavn \n");
-            string brugernavn = Console.ReadLine();
-            Console.WriteLine("\nIndtast Fornavn \n");
-            string fornavn = Console.ReadLine();
-            Console.WriteLine("\nIndtast Efternavn \n");
-            string efternavn = Console.ReadLine();
-            Console.WriteLine("\nIndtast Telefon Nummer \n");
-            string telefon = Console.ReadLine();
-            Console.WriteLine("\nIndtast E-mail \n");
-            string email = Console.ReadLine();
+            Console.WriteLine("\nIndtast Nøgleord \n");
+            string nøgleord = Console.ReadLine();
 
-            controller.Søg(id, brugernavn, fornavn, efternavn, telefon, email);
+            controller.Søg(nøgleord);
 
 
         }
