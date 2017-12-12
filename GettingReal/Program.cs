@@ -17,7 +17,7 @@ namespace GettingReal
         private void Run()
         {
             Login login = new Login();
-            login.Login();
+            login.Login1();
             
         }
     }
