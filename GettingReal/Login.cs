@@ -11,14 +11,43 @@ namespace GettingReal
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
-        private string username;
-        private string password;
-        private bool usersuccessful;
-        private bool passsuccessful;
 
-        public Login(string user, string pass)
+        public Login()
         {
-            
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spLogin", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Indtast Brugernavn");
+                    string Brugernavn = Console.ReadLine();
+                    Console.WriteLine("Indtast Password");
+                    string Password = Console.ReadLine();
+
+                    //cmd.Parameters.Add(new SqlParameter("@Brugernavn", Brugernavn));
+                    //cmd.Parameters.Add(new SqlParameter("@Password", Password));
+
+                    if (Brugernavn == /**/ && Password == /**/)
+                    {
+                        //returned ID
+                        Menu menu = new Menu();
+                        menu.ShowMenu(/**/);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Forkert brugernavn/password");
+                        Login();
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("UPS " + e.Message);
+                }
+
+            }
         }
 
         public bool CheckUsername(string user)
