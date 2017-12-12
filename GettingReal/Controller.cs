@@ -13,7 +13,6 @@ namespace GettingReal
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
         public void Søg(string nøgleord)
         {
-
             string[] ord = nøgleord.Split(' ');
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -60,6 +59,7 @@ namespace GettingReal
                                 string ContactName = reader["PårørendeNavn"].ToString();
                                 string ContactNr = reader["PårørendeNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                             }
                         }
@@ -100,7 +100,133 @@ namespace GettingReal
                                 string ContactName = reader["PårørendeNavn"].ToString();
                                 string ContactNr = reader["PårørendeNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger" + Health + "\n - Jobtype" + JobType + "\n - MedarbejderNr" + EmployeeNr + "\n - PårørendeNr" + ContactName + "\n ContactName" + ContactNr);
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
+                            }
+                        }
+                    }
+
+                    if (ord.Length == 3)
+                    {
+
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("spSøg3P", con);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword3", ord[2]));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                string ID = reader["ID"].ToString();
+                                string UserName = reader["Brugernavn"].ToString();
+                                string FirstName = reader["Navn"].ToString();
+                                string LastName = reader["Efternavn"].ToString();
+                                string Address = reader["Addresse"].ToString();
+                                string AddressL2 = reader["Addresse_l2"].ToString();
+                                string AddressCity = reader["Addresse_by"].ToString();
+                                string AddressZip = reader["Addresse_postnr"].ToString();
+                                string PhoneNumber = reader["Tlf"].ToString();
+                                string Email = reader["Email"].ToString();
+                                string SocialSecurity = reader["CPR_nr"].ToString();
+                                string AccountNumber = reader["konto_nr"].ToString();
+                                string RegNumber = reader["reg_nr"].ToString();
+                                string DepartmentID = reader["AfdelingsID"].ToString();
+                                string Health = reader["Sundhedsoplysninger"].ToString();
+                                string JobType = reader["JobType"].ToString();
+                                string EmployeeNr = reader["MedarbejderNr"].ToString();
+                                string ContactName = reader["PårørendeNavn"].ToString();
+                                string ContactNr = reader["PårørendeNr"].ToString();
+                                Console.WriteLine("\n Medarbejder:");
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
+                            }
+                        }
+                    }
+
+                    if (ord.Length == 4)
+                    {
+
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("spSøg4P", con);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword3", ord[2]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword4", ord[3]));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                string ID = reader["ID"].ToString();
+                                string UserName = reader["Brugernavn"].ToString();
+                                string FirstName = reader["Navn"].ToString();
+                                string LastName = reader["Efternavn"].ToString();
+                                string Address = reader["Addresse"].ToString();
+                                string AddressL2 = reader["Addresse_l2"].ToString();
+                                string AddressCity = reader["Addresse_by"].ToString();
+                                string AddressZip = reader["Addresse_postnr"].ToString();
+                                string PhoneNumber = reader["Tlf"].ToString();
+                                string Email = reader["Email"].ToString();
+                                string SocialSecurity = reader["CPR_nr"].ToString();
+                                string AccountNumber = reader["konto_nr"].ToString();
+                                string RegNumber = reader["reg_nr"].ToString();
+                                string DepartmentID = reader["AfdelingsID"].ToString();
+                                string Health = reader["Sundhedsoplysninger"].ToString();
+                                string JobType = reader["JobType"].ToString();
+                                string EmployeeNr = reader["MedarbejderNr"].ToString();
+                                string ContactName = reader["PårørendeNavn"].ToString();
+                                string ContactNr = reader["PårørendeNr"].ToString();
+                                Console.WriteLine("\n Medarbejder:");
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n - ContactName: " + ContactNr);
+                            }
+                        }
+                    }
+
+                    if (ord.Length == 5)
+                    {
+
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("spSøg4P", con);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword3", ord[2]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword4", ord[3]));
+                        cmd.Parameters.Add(new SqlParameter("@Keyword5", ord[4]));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                string ID = reader["ID"].ToString();
+                                string UserName = reader["Brugernavn"].ToString();
+                                string FirstName = reader["Navn"].ToString();
+                                string LastName = reader["Efternavn"].ToString();
+                                string Address = reader["Addresse"].ToString();
+                                string AddressL2 = reader["Addresse_l2"].ToString();
+                                string AddressCity = reader["Addresse_by"].ToString();
+                                string AddressZip = reader["Addresse_postnr"].ToString();
+                                string PhoneNumber = reader["Tlf"].ToString();
+                                string Email = reader["Email"].ToString();
+                                string SocialSecurity = reader["CPR_nr"].ToString();
+                                string AccountNumber = reader["konto_nr"].ToString();
+                                string RegNumber = reader["reg_nr"].ToString();
+                                string DepartmentID = reader["AfdelingsID"].ToString();
+                                string Health = reader["Sundhedsoplysninger"].ToString();
+                                string JobType = reader["JobType"].ToString();
+                                string EmployeeNr = reader["MedarbejderNr"].ToString();
+                                string ContactName = reader["PårørendeNavn"].ToString();
+                                string ContactNr = reader["PårørendeNr"].ToString();
+                                Console.WriteLine("\n Medarbejder:");
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                             }
                         }
                     }
