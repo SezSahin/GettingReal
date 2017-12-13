@@ -37,15 +37,16 @@ namespace GettingReal
                     //{
                         while (reader.Read())
                         {
-                            //string ID = reader["AfdelingsID"].ToString();
+                            string ID = reader["AfdelingsID"].ToString();
                             string UserName = reader["Brugernavn"].ToString();
                             string Kodeord = reader["Password"].ToString();
 
                             if (Brugernavn == UserName && Password == Kodeord)
                             {
+                                int afdelingsID = int.Parse(ID);
                                 //returned ID
                                 Menu menu = new Menu();
-                                menu.ShowMenu();
+                                menu.ShowMenu(afdelingsID);
                             }
                             else
                             {

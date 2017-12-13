@@ -11,7 +11,7 @@ namespace GettingReal
     class Controller
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
-        public void Søg(string nøgleord)
+        public void Søg(string nøgleord, int AfdelingsID)
         {
             string[] ord = nøgleord.Split(' ');
 
@@ -237,7 +237,7 @@ namespace GettingReal
                     Menu menu = new Menu();
                     switch (input)
                     {
-                        case ConsoleKey.Enter: menu.ShowMenu(); break;
+                        case ConsoleKey.Enter: menu.ShowMenu(AfdelingsID); break;
 
                         default:
                             Console.WriteLine("Default case");
@@ -250,7 +250,7 @@ namespace GettingReal
                 }
             }
         }
-        public void Opret()
+        public void Opret(int ID)
         {
             
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -314,9 +314,9 @@ namespace GettingReal
                     switch (input)
                     {
                         
-                        case ConsoleKey.Y: Gemt(cmd); menu.ShowMenu(); break;
+                        case ConsoleKey.Y: Gemt(cmd); menu.ShowMenu(ID); break;
 
-                        case ConsoleKey.N: menu.ShowMenu(); break;
+                        case ConsoleKey.N: menu.ShowMenu(ID); break;
 
                         default:
                             Console.WriteLine("Default case");
@@ -331,7 +331,7 @@ namespace GettingReal
                 }
             }
         }
-        public void Rediger()
+        public void Rediger(int ID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -394,7 +394,7 @@ namespace GettingReal
             Console.WriteLine("Gemt!");
             Thread.Sleep(2000);
         }
-        public void Slet()
+        public void Slet(int ID)
         {
             using(SqlConnection con = new SqlConnection(connectionString))
             {
@@ -422,10 +422,10 @@ namespace GettingReal
                     Menu menu = new Menu();
                     switch (input)
                     {
-                        case ConsoleKey.Enter: menu.ShowMenu(); break;
+                        case ConsoleKey.Enter: menu.ShowMenu(ID); break;
 
                         default:
-                            Console.WriteLine("Default case");
+                            Console.WriteLine("Default case");  
                             break;
                     }
                 }
