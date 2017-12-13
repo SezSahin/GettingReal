@@ -13,6 +13,7 @@ namespace GettingReal
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
         public void Søg(string nøgleord, int AfdelingsID)
         {
+            Menu menu = new Menu();
             string[] ord = nøgleord.Split(' ');
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -21,49 +22,70 @@ namespace GettingReal
                 try
                 {
                     //hey
+                    //con.Open();
+                    //string ID = "";
+                    //string[] idCheck = new string[200];
+                    //idCheck[0] = "0";
+
+                    //for (int i = 0; i < ord.Length; i++)
+                    //{
+                    //if (ord[i] == "")
+                    //{
+                    //    ord[i] = null;
+                    //}
+
+                    //SqlCommand cmd = new SqlCommand("spSøg", con);
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    //cmd.Parameters.Add(new SqlParameter("@Keyword", ord[i]));
+
+                    //SqlDataReader reader = cmd.ExecuteReader();
                     if (ord.Length == 1)
                     {
-                        if (ord[0] == "")
-                        {
-                            ord[0] = null;
-                        }
-
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spSøg", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
-
+                        if (ord[0] == "")
+                        {
+                            ord[0] = null;
+                        }
                         SqlDataReader reader = cmd.ExecuteReader();
-
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                string ID = reader["ID"].ToString();
-                                string UserName = reader["Brugernavn"].ToString();
-                                string FirstName = reader["Navn"].ToString();
-                                string LastName = reader["Efternavn"].ToString();
-                                string Address = reader["Addresse"].ToString();
-                                string AddressL2 = reader["Addresse_l2"].ToString();
-                                string AddressCity = reader["Addresse_by"].ToString();
-                                string AddressZip = reader["Addresse_postnr"].ToString();
-                                string PhoneNumber = reader["Tlf"].ToString();
-                                string Email = reader["Email"].ToString();
-                                string SocialSecurity = reader["CPR_nr"].ToString();
-                                string AccountNumber = reader["konto_nr"].ToString();
-                                string RegNumber = reader["reg_nr"].ToString();
-                                string DepartmentID = reader["AfdelingsID"].ToString();
-                                string Health = reader["Sundhedsoplysninger"].ToString();
-                                string JobType = reader["JobType"].ToString();
-                                string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                string ContactName = reader["PårørendeNavn"].ToString();
-                                string ContactNr = reader["PårørendeNr"].ToString();
-                                Console.WriteLine("\n Medarbejder:");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
+                            
+
+                            string ID = reader["ID"].ToString();
+                                
+                                //if (!idCheck.Contains(ID))
+                                //{
+                                    //idCheck[i] = ID;
+                                    string UserName = reader["Brugernavn"].ToString();
+                                    string FirstName = reader["Navn"].ToString();
+                                    string LastName = reader["Efternavn"].ToString();
+                                    string Address = reader["Addresse"].ToString();
+                                    string AddressL2 = reader["Addresse_l2"].ToString();
+                                    string AddressCity = reader["Addresse_by"].ToString();
+                                    string AddressZip = reader["Addresse_postnr"].ToString();
+                                    string PhoneNumber = reader["Tlf"].ToString();
+                                    string Email = reader["Email"].ToString();
+                                    string SocialSecurity = reader["CPR_nr"].ToString();
+                                    string AccountNumber = reader["konto_nr"].ToString();
+                                    string RegNumber = reader["reg_nr"].ToString();
+                                    string DepartmentID = reader["AfdelingsID"].ToString();
+                                    string Health = reader["Sundhedsoplysninger"].ToString();
+                                    string JobType = reader["JobType"].ToString();
+                                    string EmployeeNr = reader["MedarbejderNr"].ToString();
+                                    string ContactName = reader["PårørendeNavn"].ToString();
+                                    string ContactNr = reader["PårørendeNr"].ToString();
+                                    Console.WriteLine("\n Medarbejder:");
+                                    Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
+                                }
                             }
                         }
-                    }
+                        //reader.Close();
+                    //}
 
                     if (ord.Length == 2)
                     {
@@ -226,15 +248,22 @@ namespace GettingReal
                                 string ContactName = reader["PårørendeNavn"].ToString();
                                 string ContactNr = reader["PårørendeNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n - ContactName: " + ContactNr);
                             }
                         }
                     }
+                    if(ord.Length > 5)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Din søgning var for lang.");
+                        Thread.Sleep(2000);
 
-                    Console.WriteLine("Tryk 'Enter' for at fortsætte");
+                        menu.ShowMenu(AfdelingsID);
+                    }
+
+                    Console.WriteLine("\nTryk 'Enter' for at fortsætte");
                     var input = Console.ReadKey(true).Key;
 
-                    Menu menu = new Menu();
                     switch (input)
                     {
                         case ConsoleKey.Enter: menu.ShowMenu(AfdelingsID); break;
@@ -246,7 +275,7 @@ namespace GettingReal
                 }
                 catch(SqlException e)
                 {
-                    Console.WriteLine("Ugyldig information" + e.Message + "\n");
+                    Console.WriteLine("Ugyldig information " + e.Message + "\n");
                 }
             }
         }
