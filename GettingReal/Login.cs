@@ -11,9 +11,10 @@ namespace GettingReal
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
-
+        private int Login_ID;
         public void Login1()
         {
+            
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -40,6 +41,8 @@ namespace GettingReal
                             string ID = reader["AfdelingsID"].ToString();
                             string UserName = reader["Brugernavn"].ToString();
                             string Kodeord = reader["Password"].ToString();
+                            string LoginString = reader["id"].ToString();
+                            Login_ID = Int32.Parse(LoginString);
 
                             if (Brugernavn == UserName && Password == Kodeord)
                             {
@@ -70,27 +73,12 @@ namespace GettingReal
 
             }
         }
+        public int GetLoginID()
+        {
+            return Login_ID;
+        }
 
-        //public bool CheckUsername(string user)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public bool CheckPassword(string pass)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public bool CheckAll(string user, string pass)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public void LoginError()
-        //{
-
-        //}
-        //public void PassToRank()
-        //{
-
-        //}
+      
     }
 }
 

@@ -10,6 +10,7 @@ namespace GettingReal
 {
     class Controller
     {
+        
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
         public void Søg(string nøgleord, int AfdelingsID)
         {
@@ -18,7 +19,7 @@ namespace GettingReal
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-            
+
                 try
                 {
                     //hey
@@ -271,9 +272,9 @@ namespace GettingReal
                         default:
                             Console.WriteLine("Default case");
                             break;
-                    }                    
+                    }
                 }
-                catch(SqlException e)
+                catch (SqlException e)
                 {
                     Console.WriteLine("Ugyldig information " + e.Message + "\n");
                 }
@@ -281,7 +282,7 @@ namespace GettingReal
         }
         public void Opret(int ID)
         {
-            
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 if (ID > 3)
@@ -360,7 +361,8 @@ namespace GettingReal
                     {
                         Console.WriteLine("UPS " + e.Message + "\n");
                     }
-                } else
+                }
+                else
                 {
                     Menu menu = new Menu();
                     menu.ShowMenu(ID);
@@ -369,7 +371,7 @@ namespace GettingReal
         }
         public void Rediger(int ID)
         {
-            if(3 < ID)
+            if (3 < ID)
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
@@ -431,7 +433,7 @@ namespace GettingReal
                 Menu menu = new Menu();
                 menu.ShowMenu(ID);
             }
-        }
+        } // virker ikk
         public void Gemt(SqlCommand cmd)
         {
             cmd.ExecuteNonQuery();
@@ -491,6 +493,31 @@ namespace GettingReal
         public void ChangePassword()
         {
 
+        }
+        public void SkiftPassword()
+        {
+            Login log = new Login();
+            int login_id = log.GetLoginID();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SkiftPassword", con);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    Console.WriteLine("Indtast Nyt Password \n");
+                    cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+                    cmd.Parameters.Add(new SqlParameter("@id", login_id));
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch(SqlException e)
+                {
+                    Console.WriteLine("UPS S S S S " + e.Message);
+                }
+            }
         }
     }
 }

@@ -14,11 +14,12 @@ namespace GettingReal
             Console.Clear();
             Console.WriteLine("Velkommen! Du har nu følgende valgmuligheder. \n");
             Console.WriteLine("1. Søg efter medarbejder.");
+            Console.WriteLine("2. Skift din adgangskode");
             if (ID > 3)
             {
-                Console.WriteLine("2. Opret Ny medarbejder.");
-                Console.WriteLine("3. Rediger medarbejder.");
-                Console.WriteLine("4. Slet medarbejder. \n");
+                Console.WriteLine("3. Opret Ny medarbejder.");
+                Console.WriteLine("4. Rediger medarbejder.");
+                Console.WriteLine("5. Slet medarbejder. \n");
             }
             Console.WriteLine("0. Luk konsol \n");
 
@@ -32,17 +33,22 @@ namespace GettingReal
                         Søg(ID);
                         break;
                     case "2":
+                        Console.WriteLine("Skift din adgangskode");
+                        controller.SkiftPassword();
+                        break;
+                    case "3":
                         Console.WriteLine("Opret medarbejder \n");
                         controller.Opret(ID);
                         break;
-                    case "3":
+                    case "4":
                         Console.WriteLine("Rediger medarbejder \n");
                         controller.Rediger(ID);
                         break;
-                    case "4":
+                    case "5":
                         Console.WriteLine("Slet medarbejder \n");
                         controller.Slet(ID);
                         break;
+                   
                     case "0":
                         break;
                     default:
@@ -60,6 +66,10 @@ namespace GettingReal
                         case "1":
                             Console.WriteLine("\nSøg efter medarbejder. \n");
                             Søg(ID);
+                            break;
+                        case "2":
+                            Console.WriteLine("Skift din adgangskode");
+                            controller.SkiftPassword();
                             break;
                         case "0":
                             break;
