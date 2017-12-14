@@ -12,6 +12,7 @@ namespace GettingReal
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
         private int Login_ID;
+        public int login_return;
         public void Login1()
         {
             
@@ -42,8 +43,7 @@ namespace GettingReal
                             string UserName = reader["Brugernavn"].ToString();
                             string Kodeord = reader["Password"].ToString();
                             string LoginString = reader["id"].ToString();
-                            Login_ID = Int32.Parse(LoginString);
-
+                            Login_ID = int.Parse(LoginString);
                             if (Brugernavn == UserName && Password == Kodeord)
                             {
                                 int afdelingsID = int.Parse(ID);
@@ -73,9 +73,18 @@ namespace GettingReal
 
             }
         }
-        public int GetLoginID()
+        public int GetLoginID
         {
-            return Login_ID;
+          get
+            {
+                return login_return;
+            }
+            set
+            {
+               login_return = Login_ID;
+            }
+
+            
         }
 
       
