@@ -502,7 +502,7 @@ namespace GettingReal
             {
 
                 try
-                {1
+                {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("SkiftPassword", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
