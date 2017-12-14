@@ -64,7 +64,7 @@ namespace GettingReal
                     switch (menu_answer)
                     {
                         case "1":
-                            Console.WriteLine("Søg efter medarbejder. \n");
+                            Console.WriteLine("\nSøg efter medarbejder. \n");
                             Søg(ID);
                             break;
                         case "2":

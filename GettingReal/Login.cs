@@ -22,9 +22,9 @@ namespace GettingReal
                     con.Open();
                     SqlCommand cmd = new SqlCommand("spLogin", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    Console.WriteLine("Indtast Brugernavn");
+                    Console.WriteLine("Indtast Brugernavn \n");
                     string Brugernavn = Console.ReadLine();
-                    Console.WriteLine("Indtast Password");
+                    Console.WriteLine("\nIndtast Password \n");
                     string Password = Console.ReadLine();
 
                     
@@ -34,8 +34,8 @@ namespace GettingReal
                     SqlDataReader reader = cmd.ExecuteReader();
                     
 
-                    //if (reader.HasRows)
-                    //{
+                    if (reader.HasRows)
+                    {
                         while (reader.Read())
                         {
                             string ID = reader["AfdelingsID"].ToString();
@@ -51,16 +51,19 @@ namespace GettingReal
                                 Menu menu = new Menu();
                                 menu.ShowMenu(afdelingsID);
                             }
-                            else
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Forkert brugernavn/password");
-                                Login1();
-                            }
                         }
-                    //}
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Forkert Brugernavn/Password \n");
+                        Console.WriteLine("Tryk 'Enter' for at fortsætte");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Login1();
+                    }
 
-             
+
 
                 }
                 catch(SqlException e)
