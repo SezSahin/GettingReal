@@ -77,8 +77,8 @@ namespace GettingReal
                                     string Health = reader["Sundhedsoplysninger"].ToString();
                                     string JobType = reader["JobType"].ToString();
                                     string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                    string ContactName = reader["PårørendeNavn"].ToString();
-                                    string ContactNr = reader["PårørendeNr"].ToString();
+                                    string ContactName = reader["KontaktPerson"].ToString();
+                                    string ContactNr = reader["KontaktNr"].ToString();
                                     Console.WriteLine("\n Medarbejder:");
                                     Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                                 }
@@ -119,8 +119,8 @@ namespace GettingReal
                                 string Health = reader["Sundhedsoplysninger"].ToString();
                                 string JobType = reader["JobType"].ToString();
                                 string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                string ContactName = reader["PårørendeNavn"].ToString();
-                                string ContactNr = reader["PårørendeNr"].ToString();
+                                string ContactName = reader["KontaktPerson"].ToString();
+                                string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
                                 Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                             }
@@ -160,8 +160,8 @@ namespace GettingReal
                                 string Health = reader["Sundhedsoplysninger"].ToString();
                                 string JobType = reader["JobType"].ToString();
                                 string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                string ContactName = reader["PårørendeNavn"].ToString();
-                                string ContactNr = reader["PårørendeNr"].ToString();
+                                string ContactName = reader["KontaktPerson"].ToString();
+                                string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
                                 Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                             }
@@ -202,8 +202,8 @@ namespace GettingReal
                                 string Health = reader["Sundhedsoplysninger"].ToString();
                                 string JobType = reader["JobType"].ToString();
                                 string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                string ContactName = reader["PårørendeNavn"].ToString();
-                                string ContactNr = reader["PårørendeNr"].ToString();
+                                string ContactName = reader["KontaktPerson"].ToString();
+                                string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
                                 Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n - ContactName: " + ContactNr);
                             }
@@ -245,10 +245,10 @@ namespace GettingReal
                                 string Health = reader["Sundhedsoplysninger"].ToString();
                                 string JobType = reader["JobType"].ToString();
                                 string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                string ContactName = reader["PårørendeNavn"].ToString();
-                                string ContactNr = reader["PårørendeNr"].ToString();
+                                string ContactName = reader["KontaktPerson"].ToString();
+                                string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n - ContactName: " + ContactNr);
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
                             }
                         }
                     }
@@ -325,10 +325,10 @@ namespace GettingReal
                         cmd.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
                         Console.WriteLine("Indtast Medarbejder nr. \n");
                         cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
-                        Console.WriteLine("Indtast Pårørendes navn \n");
-                        cmd.Parameters.Add(new SqlParameter("@PårørendeNavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast Pørerendes nr. \n");
-                        cmd.Parameters.Add(new SqlParameter("@PårørendeNr", Console.ReadLine()));
+                        Console.WriteLine("Indtast Kontakt navn \n");
+                        cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
+                        Console.WriteLine("Indtast Kontakt nr. \n");
+                        cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
 
 
                         Console.Clear();
@@ -404,16 +404,16 @@ namespace GettingReal
                         cmd.Parameters.Add(new SqlParameter("@Reg", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt afdelings ID \n \n");
                         cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
-                        Console.WriteLine("Indtast nye sunhedsoplysninger \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Sunhedsoplsyninger", Console.ReadLine()));
+                        Console.WriteLine("Indtast nye sundhedsoplysninger \n \n");
+                        cmd.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Console.ReadLine()));
                         Console.WriteLine("Indtast ny jobtype \n \n");
                         cmd.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt medarbejder nummer \n \n");
                         cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt pårørende navn \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@PårørebdeNavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast nye pårørendeNr \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@PårørendeNr", Console.ReadLine()));
+                        Console.WriteLine("Indtast nyt kontakt navn \n \n");
+                        cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
+                        Console.WriteLine("Indtast nyt kontakt nummer \n \n");
+                        cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
                         //@Sunhedsoplysninger, @JobType, @MedarbejderNr, @PårørendeNavn, @PårørendeNr
 
                         Console.Clear();
@@ -422,7 +422,7 @@ namespace GettingReal
                     }
                     catch (SqlException e)
                     {
-                        Console.WriteLine("Prøv igen" + e.Message + "\n");
+                        Console.WriteLine("Prøv igen " + e.Message + "\n");
                     }
                 }
             }
@@ -486,6 +486,11 @@ namespace GettingReal
                 Menu menu = new Menu();
                 menu.ShowMenu(ID);
             }
+        }
+
+        public void ChangePassword()
+        {
+
         }
     }
 }
