@@ -492,7 +492,9 @@ namespace GettingReal
         public void SkiftPassword()
         {
             Login log = new Login();
-            int login_id = log.GetLoginID();
+            int login_id = log.GetLoginID;
+            Console.WriteLine(login_id);
+            /*
             using (SqlConnection con = new SqlConnection(connectionString))
             {
 
@@ -512,7 +514,7 @@ namespace GettingReal
                 {
                     Console.WriteLine("UPS S S S S " + e.Message);
                 }
-            }
+            }*/
         }
     }
 }
