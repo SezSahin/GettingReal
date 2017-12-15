@@ -81,8 +81,8 @@ namespace GettingReal
                                     string ContactName = reader["KontaktPerson"].ToString();
                                     string ContactNr = reader["KontaktNr"].ToString();
                                     Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn: " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
-                            }
+                                    Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
+                                }
                             }
                         }
                         //reader.Close();
@@ -123,7 +123,7 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn: " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                             }
                         }
                     }
@@ -164,7 +164,7 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn: " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n ContactName: " + ContactNr);
                             }
                         }
                     }
@@ -206,7 +206,7 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn: " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - PårørendeNr: " + ContactName + "\n - ContactName: " + ContactNr);
                             }
                         }
                     }
@@ -380,7 +380,7 @@ namespace GettingReal
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spOpdater", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        Console.WriteLine("Indtast nyt ID \n \n");
+                        Console.WriteLine("Vælg ID der skal redigeres \n \n");
                         cmd.Parameters.Add(new SqlParameter("@Id", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt brugernavn \n \n");
                         cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
@@ -489,31 +489,34 @@ namespace GettingReal
                 menu.ShowMenu(ID);
             }
         }
-        public void SkiftPassword()
+        public void SkiftPassword(int id, string brugernavn, string kodeord)
         {
-            Login log = new Login();
-            int login_id = log.GetLoginID;
-            Console.WriteLine(login_id);
-           /* using (SqlConnection con = new SqlConnection(connectionString))
-            {
+            Console.WriteLine("id: " + id);
+            Console.WriteLine("brugernavn: " + brugernavn);
+            Console.WriteLine("kodeord: " + kodeord);
+            //Login log = new Login();
+            //int login_id = log.GetLoginID;
+            //Console.WriteLine(login_id);
+            /* using (SqlConnection con = new SqlConnection(connectionString))
+             {
 
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SkiftPassword", con);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    Console.WriteLine("Indtast Nyt Password \n");
-                    cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                    cmd.Parameters.Add(new SqlParameter("@id", login_id));
+                 try
+                 {
+                     con.Open();
+                     SqlCommand cmd = new SqlCommand("SkiftPassword", con);
+                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                     Console.WriteLine("Indtast Nyt Password \n");
+                     cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+                     cmd.Parameters.Add(new SqlParameter("@id", login_id));
 
-                    cmd.ExecuteNonQuery();
+                     cmd.ExecuteNonQuery();
 
-                }
-                catch(SqlException e)
-                {
-                    Console.WriteLine("UPS S S S S " + e.Message);
-                }
-            }*/
+                 }
+                 catch(SqlException e)
+                 {
+                     Console.WriteLine("UPS S S S S " + e.Message);
+                 }
+             }*/
         }
     }
 }
