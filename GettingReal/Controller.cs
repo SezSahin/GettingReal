@@ -489,18 +489,12 @@ namespace GettingReal
                 menu.ShowMenu(ID);
             }
         }
-
-        public void ChangePassword()
-        {
-
-        }
         public void SkiftPassword()
         {
             Login log = new Login();
             int login_id = log.GetLoginID;
             Console.WriteLine(login_id);
-            /*
-            using (SqlConnection con = new SqlConnection(connectionString))
+           /* using (SqlConnection con = new SqlConnection(connectionString))
             {
 
                 try
