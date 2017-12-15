@@ -8,6 +8,10 @@ namespace GettingReal
 {
     public class Menu
     {
+        private string Brugernavn;
+        private string Password;
+        private int id;
+
         Controller controller = new Controller();
         public void ShowMenu(int ID)
         {
