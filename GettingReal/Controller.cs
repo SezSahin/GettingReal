@@ -12,6 +12,7 @@ namespace GettingReal
     {
         
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
+     
         public void Søg(string nøgleord, int AfdelingsID)
         {
             Menu menu = new Menu();
@@ -380,8 +381,6 @@ namespace GettingReal
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spOpdater", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        Console.WriteLine("Indtast nyt ID \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Id", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt brugernavn \n \n");
                         cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
                         Console.WriteLine("Indtast fornavn \n \n");
