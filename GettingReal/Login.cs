@@ -62,9 +62,6 @@ namespace GettingReal
                         Console.Clear();
                         Login1();
                     }
-
-
-
                 }
                 catch(SqlException e)
                 {
@@ -83,8 +80,6 @@ namespace GettingReal
             {
                login_return = Login_ID;
             }
-
-            
         }
 
       
