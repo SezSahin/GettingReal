@@ -13,6 +13,7 @@ namespace GettingReal
         private int id;
 
         Controller controller = new Controller();
+        Login l = new Login();
         public void ShowMenu(int ID)
         {
             Console.Clear();
@@ -24,10 +25,10 @@ namespace GettingReal
             {
                 Console.WriteLine("3. Opret Ny medarbejder.");
                 Console.WriteLine("4. Rediger medarbejder.");
-                Console.WriteLine("5. Slet medarbejder. \n");
+                Console.WriteLine("5. Slet medarbejder.");
             }
+            Console.WriteLine("6. Log af. \n");
             Console.WriteLine("0. Luk konsol \n");
-
             string menu_answer = Console.ReadLine();
             if (ID > 3)
             {
@@ -53,9 +54,12 @@ namespace GettingReal
                         Console.WriteLine("Slet medarbejder \n");
                         controller.Slet(ID);
                         break;
-                   
+                    case "6":
+                        l.Login1();
+                        break;
                     case "0":
                         break;
+
                     default:
                         Console.Clear();
                         Console.WriteLine("Du skal indtaste et tal der passer til valgmulighederne");

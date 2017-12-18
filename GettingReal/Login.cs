@@ -21,6 +21,7 @@ namespace GettingReal
                 try
                 {
                     con.Open();
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
                     SqlCommand cmd = new SqlCommand("spLogin", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
