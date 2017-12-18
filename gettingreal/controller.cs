@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Threading;
+using System.Diagnostics;
 
 namespace GettingReal
 {
@@ -13,7 +14,7 @@ namespace GettingReal
         
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
      
-        public void Søg(string nøgleord, int AfdelingsID)
+        public void SøgMere(string nøgleord, int afdelingsID)
         {
             Menu menu = new Menu();
             string[] ord = nøgleord.Split(' ');
@@ -262,12 +263,13 @@ namespace GettingReal
 
                         menu.ShowMenu(afdelingsID);
                     }
-
+                    Console.ForegroundColor = ConsoleColor.Red;
                     if (afdelingsID > 3)
                     {
                         Console.WriteLine("\nTryk '1' for at redigere");
                         Console.WriteLine("\nTryk '2' for at slette");
                     }
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nTryk 'Enter' for at vende tilbage til menuen");
                     var input = Console.ReadKey(true).Key;
  
@@ -276,6 +278,9 @@ namespace GettingReal
                     {
                         case ConsoleKey.D1:
                             Rediger(afdelingsID);
+                            break;
+                        case ConsoleKey.D2:
+                            Slet(afdelingsID);
                             break;
                         case ConsoleKey.Enter:
                             menu.ShowMenu(afdelingsID);
@@ -611,40 +616,142 @@ namespace GettingReal
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spOpdater", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        Console.WriteLine("Indtast nyt brugernavn \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast fornavn \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast efternavn \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast ny adresse \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
-                        Console.WriteLine("Indtast adresse linje 2 \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Adressel2", Console.ReadLine()));
-                        Console.WriteLine("Indtast by \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@By", Console.ReadLine()));
-                        Console.WriteLine("Indtast ny post nummer \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Postnr", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt telefon nummer \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
-                        Console.WriteLine("Indtast ny e-mail \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt konto nummer \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Konto", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt registrerings nummer \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Reg", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt afdelings ID \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
-                        Console.WriteLine("Indtast nye sundhedsoplysninger \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Console.ReadLine()));
-                        Console.WriteLine("Indtast ny jobtype \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt medarbejder nummer \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt kontakt navn \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
-                        Console.WriteLine("Indtast nyt kontakt nummer \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Vælg hvad der skal ændres \n");
+                        Console.WriteLine("1. Brugernavn");
+                        Console.WriteLine("2. Fornavn");
+                        Console.WriteLine("3. Efternavn");
+                        Console.WriteLine("4. Adresse");
+                        Console.WriteLine("5. Adresse linje 2");
+                        Console.WriteLine("6. By");
+                        Console.WriteLine("7. Post nummerr");
+                        Console.WriteLine("8. Telefon nummer");
+                        Console.WriteLine("9. Email");
+                        Console.WriteLine("10. Konto nummerr");
+                        Console.WriteLine("11. Registrerings nummer");
+                        Console.WriteLine("12. Afdelings ID");
+                        Console.WriteLine("13. Sundhedsoplysninger");
+                        Console.WriteLine("14. Jobtype");
+                        Console.WriteLine("15. Medarbejder nummer");
+                        Console.WriteLine("16. Kontakt navn");
+                        Console.WriteLine("17. Kontakt nummer");
+
+                        Console.WriteLine("\nTryk 'Enter' for at vende tilbage til menuen");
+                        var input = Console.ReadLine();
+
+                        Menu menu = new Menu();
+                        switch (input)
+                        {
+
+                            case "1":
+                                Console.WriteLine("Indtast Brugernavn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "2":
+                                Console.WriteLine("Indtast Fornavn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "3":
+                                Console.WriteLine("Indtast Efternavn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "4":
+                                Console.WriteLine("Indtast adresse\n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "5":
+                                Console.WriteLine("Indtast adresse linje 2 \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "6":
+                                Console.WriteLine("Indtast by \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "7":
+                                Console.WriteLine("Indtast post nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "8":
+                                Console.WriteLine("Indtast telefon nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "9":
+                                Console.WriteLine("Indtast email \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "10":
+                                Console.WriteLine("Indtast konto nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "11":
+                                Console.WriteLine("Indtast registrerings nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "12":
+                                Console.WriteLine("Indtast afdelings id \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "13":
+                                Console.WriteLine("Indtast sundhedsoplysninger \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "14":
+                                Console.WriteLine("Indtast jobtype \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "15":
+                                Console.WriteLine("Indtast medarbejder nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "16":
+                                Console.WriteLine("Indtast kontakt navn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "17":
+                                Console.WriteLine("Indtast kontakt nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+
+                            default:
+                                Console.WriteLine("Default case");
+                                break;
+
+                        }
+                        //Console.WriteLine("Indtast nyt brugernavn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                        //Console.WriteLine("Indtast fornavn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
+                        //Console.WriteLine("Indtast efternavn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny adresse \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
+                        //Console.WriteLine("Indtast adresse linje 2 \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Adressel2", Console.ReadLine()));
+                        //Console.WriteLine("Indtast by \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@By", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny post nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Postnr", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt telefon nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny e-mail \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt konto nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Konto", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt registrerings nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Reg", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt afdelings ID \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nye sundhedsoplysninger \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny jobtype \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt medarbejder nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt kontakt navn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt kontakt nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
 
                         Console.Clear();
 
@@ -656,18 +763,15 @@ namespace GettingReal
                     }
                 }
             }
-            else
-            {
-                Menu menu = new Menu();
-                menu.ShowMenu(ID);
-            }
-        } // virker ikk
+        }
+
         public void Gemt(SqlCommand cmd)
         {
             cmd.ExecuteNonQuery();
             Console.WriteLine("Gemt!");
             Thread.Sleep(2000);
         }
+
         public void Slet(int ID)
         {
             if (3 < ID)
@@ -725,6 +829,7 @@ namespace GettingReal
         public void SkiftPassword(int id, string brugernavn, string kodeord, int AfdelingsID)
         {
               Menu menu = new Menu();
+            Login l = new Login();
              using (SqlConnection con = new SqlConnection(connectionString))
              {
 
@@ -738,13 +843,59 @@ namespace GettingReal
                      cmd.Parameters.Add(new SqlParameter("@id", id));
 
                      cmd.ExecuteNonQuery();
-                     menu.ShowMenu(AfdelingsID);
+                    l.Login1();
                  }
                  catch(SqlException e)
                  {
                      Console.WriteLine("UPS S S S S " + e.Message);
                  }
              }
+        }
+        public bool Move()
+        {
+            int col = 7;
+            int row = 7;
+            Console.SetCursorPosition(col, row);    //Places the "*" before the loop    //In column 7, row 7
+            Console.Write("*");
+            Console.SetCursorPosition(col, row);
+            while (true)
+            {
+                ConsoleKeyInfo info = Console.ReadKey(true);
+                if (info.Key == ConsoleKey.UpArrow)       //Compares the given info in ReadKey to the given ConsoleKey ("W")
+                {
+                    Console.Write(" ");
+                    Debug.Print("W");
+                    row--;
+                }
+                if (info.Key == ConsoleKey.DownArrow)
+                {
+                    Console.Write(" ");
+                    Debug.Print("S");
+                    row++;
+                }
+
+                if (info.Key == ConsoleKey.LeftArrow)
+                {
+                    Console.Write(" ");
+                    Debug.Print("A");
+                    col--;
+                }
+
+                if (info.Key == ConsoleKey.RightArrow)
+                {
+                    Console.Write(" ");
+                    Debug.Print("D");       //Writes a message followed by a line terminator to the trace listeners in the Listeners collection.
+                    col++;
+                }
+                if (Console.WindowTop >= 180)
+
+                    //Debug.Print & Console.Writeline
+                    //Debug writes the message to the Output > Debug. Console.WriteLine writes the message to the standard output (Console).
+
+                    Console.SetCursorPosition(col, row);    //Places the "*" after the loop
+                Console.Write("*");
+                Console.SetCursorPosition(col, row);
+            }
         }
     }
 }
