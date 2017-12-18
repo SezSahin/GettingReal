@@ -370,6 +370,7 @@ namespace GettingReal
                 }
             }
         }
+
         public void Rediger(int ID)
         {
             if (3 < ID)
@@ -415,7 +416,6 @@ namespace GettingReal
                         cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt kontakt nummer \n \n");
                         cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
-                        //@Sunhedsoplysninger, @JobType, @MedarbejderNr, @PårørendeNavn, @PårørendeNr
 
                         Console.Clear();
 
