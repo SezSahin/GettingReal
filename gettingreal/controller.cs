@@ -12,8 +12,8 @@ namespace GettingReal
     {
         
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
-
-        public void SøgMere(string nøgleord, int afdelingsID)
+     
+        public void Søg(string nøgleord, int AfdelingsID)
         {
             Menu menu = new Menu();
             string[] ord = nøgleord.Split(' ');
@@ -711,15 +711,10 @@ namespace GettingReal
         {
 
         }
-        public void SkiftPassword(int id, string brugernavn, string kodeord)
+        public void SkiftPassword(int id, string brugernavn, string kodeord, int AfdelingsID)
         {
-            Console.WriteLine("id: " + id);
-            Console.WriteLine("brugernavn: " + brugernavn);
-            Console.WriteLine("kodeord: " + kodeord);
-            //Login log = new Login();
-            //int login_id = log.GetLoginID;
-            //Console.WriteLine(login_id);
-            /* using (SqlConnection con = new SqlConnection(connectionString))
+              Menu menu = new Menu();
+             using (SqlConnection con = new SqlConnection(connectionString))
              {
 
                  try
@@ -729,16 +724,16 @@ namespace GettingReal
                      cmd.CommandType = System.Data.CommandType.StoredProcedure;
                      Console.WriteLine("Indtast Nyt Password \n");
                      cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                     cmd.Parameters.Add(new SqlParameter("@id", login_id));
+                     cmd.Parameters.Add(new SqlParameter("@id", id));
 
                      cmd.ExecuteNonQuery();
-
+                     menu.ShowMenu(AfdelingsID);
                  }
                  catch(SqlException e)
                  {
                      Console.WriteLine("UPS S S S S " + e.Message);
                  }
-             }*/
+             }
         }
     }
 }

@@ -39,7 +39,7 @@ namespace GettingReal
                         break;
                     case "2":
                         Console.WriteLine("Skift din adgangskode");
-                        controller.SkiftPassword(id, brugernavn, password);
+                        controller.SkiftPassword(id, brugernavn, password, ID);
                         break;
                     case "3":
                         Console.WriteLine("Opret medarbejder \n");
@@ -74,7 +74,7 @@ namespace GettingReal
                             break;
                         case "2":
                             Console.WriteLine("Skift din adgangskode");
-                            controller.SkiftPassword(id, brugernavn, password);
+                            controller.SkiftPassword(id, brugernavn, password, ID);
                             break;
                         case "0":
                             break;
