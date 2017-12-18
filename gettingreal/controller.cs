@@ -12,6 +12,7 @@ namespace GettingReal
     {
         
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
+     
         public void Søg(string nøgleord, int AfdelingsID)
         {
             Menu menu = new Menu();
@@ -380,8 +381,6 @@ namespace GettingReal
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spOpdater", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        Console.WriteLine("Indtast nyt ID \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Id", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt brugernavn \n \n");
                         cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
                         Console.WriteLine("Indtast fornavn \n \n");
@@ -489,31 +488,29 @@ namespace GettingReal
                 menu.ShowMenu(ID);
             }
         }
-        public void SkiftPassword()
+        public void SkiftPassword(int id, string brugernavn, string kodeord, int AfdelingsID)
         {
-            Login log = new Login();
-            int login_id = log.GetLoginID;
-            Console.WriteLine(login_id);
-           /* using (SqlConnection con = new SqlConnection(connectionString))
-            {
+              Menu menu = new Menu();
+             using (SqlConnection con = new SqlConnection(connectionString))
+             {
 
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SkiftPassword", con);
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    Console.WriteLine("Indtast Nyt Password \n");
-                    cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                    cmd.Parameters.Add(new SqlParameter("@id", login_id));
+                 try
+                 {
+                     con.Open();
+                     SqlCommand cmd = new SqlCommand("SkiftPassword", con);
+                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                     Console.WriteLine("Indtast Nyt Password \n");
+                     cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+                     cmd.Parameters.Add(new SqlParameter("@id", id));
 
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch(SqlException e)
-                {
-                    Console.WriteLine("UPS S S S S " + e.Message);
-                }
-            }*/
+                     cmd.ExecuteNonQuery();
+                     menu.ShowMenu(AfdelingsID);
+                 }
+                 catch(SqlException e)
+                 {
+                     Console.WriteLine("UPS S S S S " + e.Message);
+                 }
+             }
         }
     }
 }
