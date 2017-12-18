@@ -717,34 +717,34 @@ namespace GettingReal
                 menu.ShowMenu(ID);
             }
         }
-        public void SkiftPassword(int id, string brugernavn, string kodeord)
+
+        public void ChangePassword()
         {
-            //Console.WriteLine("id: " + id);
-            //Console.WriteLine("brugernavn: " + brugernavn);
-            //Console.WriteLine("kodeord: " + kodeord);
-            //Login log = new Login();
-            //int login_id = log.GetLoginID;
-            //Console.WriteLine(login_id);
-            // using (SqlConnection con = new SqlConnection(connectionString))
-            // {
 
-            //     try
-            //     {
-            //         con.Open();
-            //         SqlCommand cmd = new SqlCommand("SkiftPassword", con);
-            //         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            //         Console.WriteLine("Indtast Nyt Password \n");
-            //         cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-            //         cmd.Parameters.Add(new SqlParameter("@id", login_id));
+        }
+        public void SkiftPassword(int id, string brugernavn, string kodeord, int AfdelingsID)
+        {
+              Menu menu = new Menu();
+             using (SqlConnection con = new SqlConnection(connectionString))
+             {
 
-            //         cmd.ExecuteNonQuery();
+                 try
+                 {
+                     con.Open();
+                     SqlCommand cmd = new SqlCommand("SkiftPassword", con);
+                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                     Console.WriteLine("Indtast Nyt Password \n");
+                     cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+                     cmd.Parameters.Add(new SqlParameter("@id", id));
 
-            //     }
-            //     catch(SqlException e)
-            //     {
-            //         Console.WriteLine("UPS S S S S " + e.Message);
-            //     }
-            // }
+                     cmd.ExecuteNonQuery();
+                     menu.ShowMenu(AfdelingsID);
+                 }
+                 catch(SqlException e)
+                 {
+                     Console.WriteLine("UPS S S S S " + e.Message);
+                 }
+             }
         }
     }
 }
