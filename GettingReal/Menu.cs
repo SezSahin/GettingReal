@@ -8,8 +8,8 @@ namespace GettingReal
 {
     public class Menu
     {
-        private string Brugernavn;
-        private string Password;
+        private string brugernavn;
+        private string password;
         private int id;
 
         Controller controller = new Controller();
@@ -38,7 +38,7 @@ namespace GettingReal
                         break;
                     case "2":
                         Console.WriteLine("Skift din adgangskode");
-                        controller.SkiftPassword();
+                        controller.SkiftPassword(id, brugernavn, password);
                         break;
                     case "3":
                         Console.WriteLine("Opret medarbejder \n");
@@ -73,7 +73,7 @@ namespace GettingReal
                             break;
                         case "2":
                             Console.WriteLine("Skift din adgangskode");
-                            controller.SkiftPassword();
+                            controller.SkiftPassword(id, brugernavn, password);
                             break;
                         case "0":
                             break;
@@ -96,5 +96,20 @@ namespace GettingReal
 
         }
 
+        public string Brugernavn {
+            get { return brugernavn; }
+            set { brugernavn = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public int Id {
+            get { return id; }
+            set { id = value; }
+        }
     }
 }

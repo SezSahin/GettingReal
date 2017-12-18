@@ -49,6 +49,9 @@ namespace GettingReal
                                 int afdelingsID = int.Parse(ID);
                                 //returned ID
                                 Menu menu = new Menu();
+                                menu.Id = Login_ID;
+                                menu.Password = Kodeord;
+                                menu.Brugernavn = UserName;
                                 menu.ShowMenu(afdelingsID);
                             }
                         }
@@ -70,19 +73,6 @@ namespace GettingReal
 
             }
         }
-        public int GetLoginID
-        {
-          get
-            {
-                return login_return;
-            }
-            set
-            {
-               login_return = Login_ID;
-            }
-        }
-
-      
     }
 }
 
