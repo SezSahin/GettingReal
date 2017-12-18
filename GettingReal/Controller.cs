@@ -369,6 +369,7 @@ namespace GettingReal
                 }
             }
         }
+
         public void Rediger(int ID)
         {
             if (3 < ID)
@@ -416,7 +417,6 @@ namespace GettingReal
                         cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
                         Console.WriteLine("Indtast nyt kontakt nummer \n \n");
                         cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
-                        //@Sunhedsoplysninger, @JobType, @MedarbejderNr, @PårørendeNavn, @PårørendeNr
 
                         Console.Clear();
 
@@ -489,12 +489,18 @@ namespace GettingReal
                 menu.ShowMenu(ID);
             }
         }
+
+        public void ChangePassword()
+        {
+
+        }
         public void SkiftPassword()
         {
             Login log = new Login();
             int login_id = log.GetLoginID;
             Console.WriteLine(login_id);
-           /* using (SqlConnection con = new SqlConnection(connectionString))
+            /*
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
 
                 try
