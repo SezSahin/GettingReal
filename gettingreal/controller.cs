@@ -263,12 +263,20 @@ namespace GettingReal
                         menu.ShowMenu(afdelingsID);
                     }
 
+                    if (afdelingsID > 3)
+                    {
+                        Console.WriteLine("\nTryk '1' for at redigere");
+                        Console.WriteLine("\nTryk '2' for at slette");
+                    }
                     Console.WriteLine("\nTryk 'Enter' for at vende tilbage til menuen");
                     var input = Console.ReadKey(true).Key;
-
+ 
                     //Console.Clear();
                     switch (input)
                     {
+                        case ConsoleKey.D1:
+                            Rediger(afdelingsID);
+                            break;
                         case ConsoleKey.Enter:
                             menu.ShowMenu(afdelingsID);
                             break;
@@ -480,6 +488,9 @@ namespace GettingReal
                     {
                         case ConsoleKey.D1:
                             SøgMere(nøgleord, AfdelingsID);
+                            break;
+                        case ConsoleKey.D2:
+                            Rediger(AfdelingsID);
                             break;
                         case ConsoleKey.D3:
                             Slet(AfdelingsID);
@@ -706,39 +717,34 @@ namespace GettingReal
                 menu.ShowMenu(ID);
             }
         }
-
-        public void ChangePassword()
-        {
-
-        }
         public void SkiftPassword(int id, string brugernavn, string kodeord)
         {
-            Console.WriteLine("id: " + id);
-            Console.WriteLine("brugernavn: " + brugernavn);
-            Console.WriteLine("kodeord: " + kodeord);
+            //Console.WriteLine("id: " + id);
+            //Console.WriteLine("brugernavn: " + brugernavn);
+            //Console.WriteLine("kodeord: " + kodeord);
             //Login log = new Login();
             //int login_id = log.GetLoginID;
             //Console.WriteLine(login_id);
-            /* using (SqlConnection con = new SqlConnection(connectionString))
-             {
+            // using (SqlConnection con = new SqlConnection(connectionString))
+            // {
 
-                 try
-                 {
-                     con.Open();
-                     SqlCommand cmd = new SqlCommand("SkiftPassword", con);
-                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                     Console.WriteLine("Indtast Nyt Password \n");
-                     cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                     cmd.Parameters.Add(new SqlParameter("@id", login_id));
+            //     try
+            //     {
+            //         con.Open();
+            //         SqlCommand cmd = new SqlCommand("SkiftPassword", con);
+            //         cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            //         Console.WriteLine("Indtast Nyt Password \n");
+            //         cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+            //         cmd.Parameters.Add(new SqlParameter("@id", login_id));
 
-                     cmd.ExecuteNonQuery();
+            //         cmd.ExecuteNonQuery();
 
-                 }
-                 catch(SqlException e)
-                 {
-                     Console.WriteLine("UPS S S S S " + e.Message);
-                 }
-             }*/
+            //     }
+            //     catch(SqlException e)
+            //     {
+            //         Console.WriteLine("UPS S S S S " + e.Message);
+            //     }
+            // }
         }
     }
 }
