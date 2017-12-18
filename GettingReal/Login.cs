@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace GettingReal
 {
-    class Login
+    public class Login
     {
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
 
@@ -21,6 +21,7 @@ namespace GettingReal
                 try
                 {
                     con.Open();
+                    Console.ForegroundColor = ConsoleColor.White;
                     SqlCommand cmd = new SqlCommand("spLogin", con);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     Console.WriteLine("Indtast Brugernavn \n");

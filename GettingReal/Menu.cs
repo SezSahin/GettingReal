@@ -16,6 +16,7 @@ namespace GettingReal
         public void ShowMenu(int ID)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Velkommen! Du har nu følgende valgmuligheder. \n");
             Console.WriteLine("1. Søg efter medarbejder.");
             Console.WriteLine("2. Skift din adgangskode");
