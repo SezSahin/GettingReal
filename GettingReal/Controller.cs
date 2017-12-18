@@ -719,32 +719,32 @@ namespace GettingReal
         }
         public void SkiftPassword(int id, string brugernavn, string kodeord)
         {
-            Console.WriteLine("id: " + id);
-            Console.WriteLine("brugernavn: " + brugernavn);
-            Console.WriteLine("kodeord: " + kodeord);
-            Login log = new Login();
-            int login_id = log.GetLoginID;
-            Console.WriteLine(login_id);
-             using (SqlConnection con = new SqlConnection(connectionString))
-             {
+            //Console.WriteLine("id: " + id);
+            //Console.WriteLine("brugernavn: " + brugernavn);
+            //Console.WriteLine("kodeord: " + kodeord);
+            //Login log = new Login();
+            //int login_id = log.GetLoginID;
+            //Console.WriteLine(login_id);
+            // using (SqlConnection con = new SqlConnection(connectionString))
+            // {
 
-                 try
-                 {
-                     con.Open();
-                     SqlCommand cmd = new SqlCommand("SkiftPassword", con);
-                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                     Console.WriteLine("Indtast Nyt Password \n");
-                     cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                     cmd.Parameters.Add(new SqlParameter("@id", login_id));
+            //     try
+            //     {
+            //         con.Open();
+            //         SqlCommand cmd = new SqlCommand("SkiftPassword", con);
+            //         cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            //         Console.WriteLine("Indtast Nyt Password \n");
+            //         cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+            //         cmd.Parameters.Add(new SqlParameter("@id", login_id));
 
-                     cmd.ExecuteNonQuery();
+            //         cmd.ExecuteNonQuery();
 
-                 }
-                 catch(SqlException e)
-                 {
-                     Console.WriteLine("UPS S S S S " + e.Message);
-                 }
-             }
+            //     }
+            //     catch(SqlException e)
+            //     {
+            //         Console.WriteLine("UPS S S S S " + e.Message);
+            //     }
+            // }
         }
     }
 }
