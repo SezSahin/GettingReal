@@ -629,7 +629,7 @@ namespace GettingReal
                             {
                                 string UserName = reader["Brugernavn"].ToString();
                                 Console.WriteLine("Indtast Brugernavn");
-                                Console.WriteLine("Nuværende Bruger navn: " + UserName);
+                                Console.WriteLine("Nuværende Brugernavn: " + UserName);
                                 string Username1 = Console.ReadLine();
                                 if(Username1 != "")
                                 {
@@ -663,7 +663,7 @@ namespace GettingReal
                                     Addresse = Addresse1;
                                 }
 
-                                string Addresse2 = reader["Addresse2"].ToString();
+                                string Addresse2 = reader["Addresse_l2"].ToString();
                                 Console.WriteLine("Indtast Addresse2");
                                 Console.WriteLine("Nuværende Addresse2: " + Addresse2);
                                 string Addresse21 = Console.ReadLine();
@@ -780,10 +780,41 @@ namespace GettingReal
                                     KontaktNr = KontaktNr1;
                                 }
 
+                                string AfdelingsId = reader["AfdelingsID"].ToString();
+                                Console.WriteLine("Indtast kontaktpersons telefonnummer");
+                                Console.WriteLine("Nuværende kontaktpersons telefonnummer: " + AfdelingsId);
+                                string AfdelingsId1 = Console.ReadLine();
+                                if (KontaktNr1 != "")
+                                {
+                                    AfdelingsId = AfdelingsId1;
+                                }
+                                reader.Close();
 
                                 SqlCommand cmd2 = new SqlCommand("spOpdater", con);
                                 cmd2.CommandType = System.Data.CommandType.StoredProcedure;
-                                cmd2.Parameters.Add(new SqlParameter("@MedarbejderNr", Navn));
+                                cmd2.Parameters.Add(new SqlParameter("@BrugerNavn", UserName));
+                                cmd2.Parameters.Add(new SqlParameter("@Fornavn", Navn));
+                                cmd2.Parameters.Add(new SqlParameter("@Efternavn", Efternavn));
+                                cmd2.Parameters.Add(new SqlParameter("@Adresse", Addresse));
+                                cmd2.Parameters.Add(new SqlParameter("@Adressel2", Addresse2));
+                                cmd2.Parameters.Add(new SqlParameter("@By", Addresse_by));
+                                cmd2.Parameters.Add(new SqlParameter("@Postnr", addresse_postnr));
+                                cmd2.Parameters.Add(new SqlParameter("@Tlf", Tlf));
+                                cmd2.Parameters.Add(new SqlParameter("@Email", Email));
+                                cmd2.Parameters.Add(new SqlParameter("@CPR", CPR_nr));
+                                cmd2.Parameters.Add(new SqlParameter("@Konto", konto_nr));
+                                cmd2.Parameters.Add(new SqlParameter("@Reg", reg_nr));
+                                cmd2.Parameters.Add(new SqlParameter("@AfdelingsID", AfdelingsId));
+                                cmd2.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Sundhedsoplysninger));
+                                cmd2.Parameters.Add(new SqlParameter("@JobType", JobType));
+                                cmd2.Parameters.Add(new SqlParameter("@MedarbejderNr", MedarbejderNr));
+                                cmd2.Parameters.Add(new SqlParameter("@KontaktPerson", KontaktPerson));
+                                cmd2.Parameters.Add(new SqlParameter("@KontaktNr", KontaktNr));
+                                cmd2.ExecuteNonQuery();
+
+                                Menu menu = new Menu();
+                                menu.ShowMenu(ID);
+
                             }
 
                         }
