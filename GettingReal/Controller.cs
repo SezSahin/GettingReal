@@ -822,10 +822,7 @@ namespace GettingReal
             }
         }
 
-        public void ChangePassword()
-        {
 
-        }
         public void SkiftPassword(int id, string brugernavn, string kodeord, int AfdelingsID)
         {
               Menu menu = new Menu();
