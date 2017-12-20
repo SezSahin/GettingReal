@@ -26,9 +26,13 @@ namespace GettingReal
                 Console.WriteLine("3. Opret Ny medarbejder.");
                 Console.WriteLine("4. Rediger medarbejder.");
                 Console.WriteLine("5. Slet medarbejder.");
+                Console.WriteLine("6. Log af.");
             }
-            Console.WriteLine("6. Log af. \n");
-            Console.WriteLine("0. Luk konsol \n");
+            if(afdelingsID < 4)
+            {
+                Console.WriteLine("3. Log af.");
+            }
+            Console.WriteLine("\n0. Luk konsol \n");
             string menu_answer = Console.ReadLine();
             if (afdelingsID > 3)
             {
@@ -79,6 +83,9 @@ namespace GettingReal
                         case "2":
                             Console.WriteLine("Skift din adgangskode");
                             controller.SkiftPassword(id, brugernavn, password, afdelingsID);
+                            break;
+                        case "3":
+                            l.Login1();
                             break;
                         case "0":
                             break;

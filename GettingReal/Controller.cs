@@ -283,8 +283,7 @@ namespace GettingReal
                                 }
                                 else
                                 {
-                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + 
-                                                      "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
                                 }
                             }
                         }
