@@ -14,7 +14,7 @@ namespace GettingReal
         
         private string connectionString = "Server=EALSQL1.eal.local; Database=DB2017_A18; User id=USER_A18; Password=SesamLukOp_18;";
      
-        public void SøgMere(string nøgleord, int afdelingsID)
+        public void Søg(string nøgleord, int afdelingsID)
         {
             Menu menu = new Menu();
             string[] ord = nøgleord.Split(' ');
@@ -24,24 +24,6 @@ namespace GettingReal
 
                 try
                 {
-                    //hey
-                    //con.Open();
-                    //string ID = "";
-                    //string[] idCheck = new string[200];
-                    //idCheck[0] = "0";
-
-                    //for (int i = 0; i < ord.Length; i++)
-                    //{
-                    //if (ord[i] == "")
-                    //{
-                    //    ord[i] = null;
-                    //}
-
-                    //SqlCommand cmd = new SqlCommand("spSøg", con);
-                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    //cmd.Parameters.Add(new SqlParameter("@Keyword", ord[i]));
-
-                    //SqlDataReader reader = cmd.ExecuteReader();
                     if (ord.Length == 1)
                     {
                         con.Open();
@@ -83,7 +65,12 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                if (afdelingsID > 3)
+                                {
+                                    Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                }
+                                else {
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);  }
                             }
                         }
                     }
@@ -125,7 +112,14 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                if (afdelingsID > 3)
+                                {
+                                    Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
+                                }
                             }
                         }
                     }
@@ -166,7 +160,14 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                if (afdelingsID > 3)
+                                {
+                                    Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
+                                }
                             }
                         }
                     }
@@ -208,7 +209,14 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                if (afdelingsID > 3)
+                                {
+                                    Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
+                                }
                             }
                         }
                     }
@@ -251,7 +259,32 @@ namespace GettingReal
                                 string ContactName = reader["KontaktPerson"].ToString();
                                 string ContactNr = reader["KontaktNr"].ToString();
                                 Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Adresselinje 1: " + Address + "\n - Adresselinje 2: " + AddressL2 + "\n - By: " + AddressCity + "\n - Post nr: " + AddressZip + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email + "\n - CPR nr: " + SocialSecurity + "\n - Konto nr: " + AccountNumber + "\n - Reg nr: " + RegNumber + "\n - AfdelingsID: " + DepartmentID + "\n - Sundhedsolysninger: " + Health + "\n - Jobtype: " + JobType + "\n - MedarbejderNr: " + EmployeeNr + "\n - KontaktPerson: " + ContactName + "\n - KontaktNr: " + ContactNr);
+                                if (afdelingsID > 3)
+                                {
+                                    Console.WriteLine(" - ID: " + ID + 
+                                        "\n - Brugernavn: " + UserName + 
+                                        "\n - Fornavn " + FirstName + 
+                                        "\n - Efternavn " + LastName + 
+                                        "\n - Adresselinje 1: " + Address + 
+                                        "\n - Adresselinje 2: " + AddressL2 + 
+                                        "\n - By: " + AddressCity + 
+                                        "\n - Post nr: " + AddressZip + 
+                                        "\n - Telefon nr: " + PhoneNumber + 
+                                        "\n - Email: " + Email + 
+                                        "\n - CPR nr: " + SocialSecurity + 
+                                        "\n - Konto nr: " + AccountNumber + 
+                                        "\n - Reg nr: " + RegNumber + 
+                                        "\n - AfdelingsID: " + DepartmentID + 
+                                        "\n - Sundhedsolysninger: " + Health + 
+                                        "\n - Jobtype: " + JobType + 
+                                        "\n - MedarbejderNr: " + EmployeeNr + 
+                                        "\n - KontaktPerson: " + ContactName + 
+                                        "\n - KontaktNr: " + ContactNr);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
+                                }
                             }
                         }
                     }
@@ -260,36 +293,15 @@ namespace GettingReal
                         Console.Clear();
                         Console.WriteLine("Din søgning var for lang.");
                         Thread.Sleep(2000);
-
+                        con.Close();
                         menu.ShowMenu(afdelingsID);
                     }
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    if (afdelingsID > 3)
-                    {
-                        Console.WriteLine("\nTryk '1' for at redigere");
-                        Console.WriteLine("\nTryk '2' for at slette");
-                    }
-                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nTryk 'Enter' for at vende tilbage til menuen");
-                    var input = Console.ReadKey(true).Key;
+                    Console.ReadKey();
+                    con.Close();
+                    menu.ShowMenu(afdelingsID);
  
-                    //Console.Clear();
-                    switch (input)
-                    {
-                        case ConsoleKey.D1:
-                            Rediger(afdelingsID);
-                            break;
-                        case ConsoleKey.D2:
-                            Slet(afdelingsID);
-                            break;
-                        case ConsoleKey.Enter:
-                            menu.ShowMenu(afdelingsID);
-                            break;
-
-                        default:
-                            Console.WriteLine("Default case");
-                            break;
-                    }
+                    
                 }
                 catch (SqlException e)
                 {
@@ -297,274 +309,58 @@ namespace GettingReal
                 }
             }
         }
-        public void Søg(string nøgleord, int AfdelingsID)
-        {
-            Menu menu = new Menu();
-            string[] ord = nøgleord.Split(' ');
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-
-                try
-                {
-                    //hey
-                    //con.Open();
-                    //string ID = "";
-                    //string[] idCheck = new string[200];
-                    //idCheck[0] = "0";
-
-                    //for (int i = 0; i < ord.Length; i++)
-                    //{
-                    //if (ord[i] == "")
-                    //{
-                    //    ord[i] = null;
-                    //}
-
-                    //SqlCommand cmd = new SqlCommand("spSøg", con);
-                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    //cmd.Parameters.Add(new SqlParameter("@Keyword", ord[i]));
-
-                    //SqlDataReader reader = cmd.ExecuteReader();
-                    if (ord.Length == 1)
-                    {
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("spSøg", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
-                        if (ord[0] == "")
-                        {
-                            ord[0] = null;
-                        }
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                            
-
-                            string ID = reader["ID"].ToString();
-                                
-                            //if (!idCheck.Contains(ID))
-                            //{
-                                //idCheck[i] = ID;
-                                string UserName = reader["Brugernavn"].ToString();
-                                string FirstName = reader["Navn"].ToString();
-                                string LastName = reader["Efternavn"].ToString();
-                                string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - MedarbejderNr: " + EmployeeNr);
-                            }
-                        }
-                    }
-                        //reader.Close();
-                    //}
-
-                    if (ord.Length == 2)
-                    {
-
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("spSøg2P", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                string ID = reader["ID"].ToString();
-                                string UserName = reader["Brugernavn"].ToString();
-                                string FirstName = reader["Navn"].ToString();
-                                string LastName = reader["Efternavn"].ToString();
-                                string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - MedarbejderNr: " + EmployeeNr);
-                            }
-                        }
-                    }
-
-                    if (ord.Length == 3)
-                    {
-
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("spSøg3P", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword3", ord[2]));
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                string ID = reader["ID"].ToString();
-                                string UserName = reader["Brugernavn"].ToString();
-                                string FirstName = reader["Navn"].ToString();
-                                string LastName = reader["Efternavn"].ToString();
-                                string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - MedarbejderNr: " + EmployeeNr);
-                            }
-                        }
-                    }
-
-                    if (ord.Length == 4)
-                    {
-
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("spSøg4P", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword3", ord[2]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword4", ord[3]));
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                string ID = reader["ID"].ToString();
-                                string UserName = reader["Brugernavn"].ToString();
-                                string FirstName = reader["Navn"].ToString();
-                                string LastName = reader["Efternavn"].ToString();
-                                string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - MedarbejderNr: " + EmployeeNr);
-                            }
-                        }
-                    }
-
-                    if (ord.Length == 5)
-                    {
-
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("spSøg4P", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword3", ord[2]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword4", ord[3]));
-                        cmd.Parameters.Add(new SqlParameter("@Keyword5", ord[4]));
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                string ID = reader["ID"].ToString();
-                                string UserName = reader["Brugernavn"].ToString();
-                                string FirstName = reader["Navn"].ToString();
-                                string LastName = reader["Efternavn"].ToString();
-                                string EmployeeNr = reader["MedarbejderNr"].ToString();
-                                Console.WriteLine("\n Medarbejder:");
-                                Console.WriteLine(" - ID: " + ID + "\n - Brugernavn: " + UserName + "\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - MedarbejderNr: " + EmployeeNr);
-                            }
-                        }
-                    }
-                    if(ord.Length > 5)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Din søgning var for lang.");
-                        Thread.Sleep(2000);
-
-                        menu.ShowMenu(AfdelingsID);
-                    }
-
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    if (AfdelingsID > 3)
-                    {
-                        Console.WriteLine("\nTryk '1' for at hente mere information");
-                        Console.WriteLine("\nTryk '2' for at redigere");
-                        Console.WriteLine("\nTryk '3' for at slette");
-                    }
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nTryk 'Enter' for at vende tilbage til menuen");
-                    var input = Console.ReadKey(true).Key;
-
-                    //Console.Clear();
-                    switch (input)
-                    {
-                        case ConsoleKey.D1:
-                            SøgMere(nøgleord, AfdelingsID);
-                            break;
-                        case ConsoleKey.D2:
-                            Rediger(AfdelingsID);
-                            break;
-                        case ConsoleKey.D3:
-                            Slet(AfdelingsID);
-                            break;
-                        case ConsoleKey.Enter: menu.ShowMenu(AfdelingsID);
-                            break;
-
-                        default:
-                            Console.WriteLine("Default case");
-                            break;
-                    }
-                }
-                catch (SqlException e)
-                {
-                    Console.WriteLine("Ugyldig information " + e.Message + "\n");
-                }
-            }
-        }
         
-        public void Opret(int ID)
+        public void Opret(int afdelingsID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                if (ID > 3)
+                if (afdelingsID > 3)
                 {
                     try
                     {
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("spOpretBruger", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlCommand handling = new SqlCommand("spOpretBruger", con);
+                        handling.CommandType = System.Data.CommandType.StoredProcedure;
                         Console.WriteLine("Indtast Brugernavn \n");
-                        cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
                         Console.WriteLine("Indtast Pasword \n");
-                        cmd.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
                         Console.WriteLine("Indtast Navn og mellem navn \n");
-                        cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
                         Console.WriteLine("Indtast Efternavn \n");
-                        cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
                         Console.WriteLine("Indtast Addresselinje 1 \n");
-                        cmd.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
                         Console.WriteLine("Indtast Addresselinje 2 \n");
-                        cmd.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
                         Console.WriteLine("Indtast Addresse By\n");
-                        cmd.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
                         Console.WriteLine("Indtast Post nr.\n");
-                        cmd.Parameters.Add(new SqlParameter("@Addresse_postnr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Addresse_postnr", Console.ReadLine()));
                         Console.WriteLine("Indtast Telefon nr.\n");
-                        cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
                         Console.WriteLine("Indtast e-mail \n \n");
-                        cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
                         Console.WriteLine("Indtast CPR \n");
-                        cmd.Parameters.Add(new SqlParameter("@CPR_nr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@CPR_nr", Console.ReadLine()));
                         Console.WriteLine("Indtast Konto nr. \n");
-                        cmd.Parameters.Add(new SqlParameter("@konto_nr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@konto_nr", Console.ReadLine()));
                         Console.WriteLine("Indtast Reg nr. \n");
-                        cmd.Parameters.Add(new SqlParameter("@reg_nr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@reg_nr", Console.ReadLine()));
                         Console.WriteLine("Indtast AfdelingsID \n");
-                        cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
                         Console.WriteLine("Indtast Sundhedsoplysninger \n");
-                        cmd.Parameters.Add(new SqlParameter("@Sunhedsoplysninger", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Sunhedsoplysninger", Console.ReadLine()));
                         Console.WriteLine("Indtast Jobtype \n");
-                        cmd.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
                         Console.WriteLine("Indtast Medarbejder nr. \n");
-                        cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
                         Console.WriteLine("Indtast Kontakt navn \n");
-                        cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
                         Console.WriteLine("Indtast Kontakt nr. \n");
-                        cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
 
 
                         Console.Clear();
@@ -581,9 +377,9 @@ namespace GettingReal
                         switch (input)
                         {
 
-                            case ConsoleKey.Y: Gemt(cmd); menu.ShowMenu(ID); break;
+                            case ConsoleKey.Y: Gem(handling); con.Close(); menu.ShowMenu(afdelingsID); break;
 
-                            case ConsoleKey.N: menu.ShowMenu(ID); break;
+                            case ConsoleKey.N:con.Close(); menu.ShowMenu(afdelingsID); break;
 
                             default:
                                 Console.WriteLine("Default case");
@@ -599,15 +395,16 @@ namespace GettingReal
                 }
                 else
                 {
+                    con.Close();
                     Menu menu = new Menu();
-                    menu.ShowMenu(ID);
+                    menu.ShowMenu(afdelingsID);
                 }
             }
         }
 
-        public void Rediger(int ID)
+        public void Rediger(int afdelingsID)
         {
-            if (3 < ID)
+            if (3 < afdelingsID)
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
@@ -615,14 +412,14 @@ namespace GettingReal
                     {
 
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("spFinnMedarbejder", con);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlCommand handling = new SqlCommand("spFinnMedarbejder", con);
+                        handling.CommandType = System.Data.CommandType.StoredProcedure;
                         Console.Clear();
                         Console.WriteLine("Indtast Medarbejder nr.");
-                        cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
-                        cmd.ExecuteNonQuery();
+                        handling.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+                        handling.ExecuteNonQuery();
 
-                        SqlDataReader reader = cmd.ExecuteReader();
+                        SqlDataReader reader = handling.ExecuteReader();
                         if (reader.HasRows)
                         {
                             while (reader.Read())
@@ -790,30 +587,46 @@ namespace GettingReal
                                 }
                                 reader.Close();
 
-                                SqlCommand cmd2 = new SqlCommand("spOpdater", con);
-                                cmd2.CommandType = System.Data.CommandType.StoredProcedure;
-                                cmd2.Parameters.Add(new SqlParameter("@BrugerNavn", UserName));
-                                cmd2.Parameters.Add(new SqlParameter("@Fornavn", Navn));
-                                cmd2.Parameters.Add(new SqlParameter("@Efternavn", Efternavn));
-                                cmd2.Parameters.Add(new SqlParameter("@Adresse", Addresse));
-                                cmd2.Parameters.Add(new SqlParameter("@Adressel2", Addresse2));
-                                cmd2.Parameters.Add(new SqlParameter("@By", Addresse_by));
-                                cmd2.Parameters.Add(new SqlParameter("@Postnr", addresse_postnr));
-                                cmd2.Parameters.Add(new SqlParameter("@Tlf", Tlf));
-                                cmd2.Parameters.Add(new SqlParameter("@Email", Email));
-                                cmd2.Parameters.Add(new SqlParameter("@CPR", CPR_nr));
-                                cmd2.Parameters.Add(new SqlParameter("@Konto", konto_nr));
-                                cmd2.Parameters.Add(new SqlParameter("@Reg", reg_nr));
-                                cmd2.Parameters.Add(new SqlParameter("@AfdelingsID", AfdelingsId));
-                                cmd2.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Sundhedsoplysninger));
-                                cmd2.Parameters.Add(new SqlParameter("@JobType", JobType));
-                                cmd2.Parameters.Add(new SqlParameter("@MedarbejderNr", MedarbejderNr));
-                                cmd2.Parameters.Add(new SqlParameter("@KontaktPerson", KontaktPerson));
-                                cmd2.Parameters.Add(new SqlParameter("@KontaktNr", KontaktNr));
-                                cmd2.ExecuteNonQuery();
+                                SqlCommand handling2 = new SqlCommand("spOpdater", con);
+                                handling2.CommandType = System.Data.CommandType.StoredProcedure;
+                                handling2.Parameters.Add(new SqlParameter("@BrugerNavn", UserName));
+                                handling2.Parameters.Add(new SqlParameter("@Fornavn", Navn));
+                                handling2.Parameters.Add(new SqlParameter("@Efternavn", Efternavn));
+                                handling2.Parameters.Add(new SqlParameter("@Adresse", Addresse));
+                                handling2.Parameters.Add(new SqlParameter("@Adressel2", Addresse2));
+                                handling2.Parameters.Add(new SqlParameter("@By", Addresse_by));
+                                handling2.Parameters.Add(new SqlParameter("@Postnr", addresse_postnr));
+                                handling2.Parameters.Add(new SqlParameter("@Tlf", Tlf));
+                                handling2.Parameters.Add(new SqlParameter("@Email", Email));
+                                handling2.Parameters.Add(new SqlParameter("@CPR", CPR_nr));
+                                handling2.Parameters.Add(new SqlParameter("@Konto", konto_nr));
+                                handling2.Parameters.Add(new SqlParameter("@Reg", reg_nr));
+                                handling2.Parameters.Add(new SqlParameter("@AfdelingsID", AfdelingsId));
+                                handling2.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Sundhedsoplysninger));
+                                handling2.Parameters.Add(new SqlParameter("@JobType", JobType));
+                                handling2.Parameters.Add(new SqlParameter("@MedarbejderNr", MedarbejderNr));
+                                handling2.Parameters.Add(new SqlParameter("@KontaktPerson", KontaktPerson));
+                                handling2.Parameters.Add(new SqlParameter("@KontaktNr", KontaktNr));
+
+                                Console.Clear();
+
+                                Console.WriteLine("Gem? Ja = y|| Nej = n ");
+
+                                var input = Console.ReadKey(true).Key;
 
                                 Menu menu = new Menu();
-                                menu.ShowMenu(ID);
+                                switch (input)
+                                {
+
+                                    case ConsoleKey.Y: Gem(handling2); con.Close(); menu.ShowMenu(afdelingsID); break;
+
+                                    case ConsoleKey.N: con.Close(); menu.ShowMenu(afdelingsID); break;
+
+                                    default:
+                                        Console.WriteLine("Default case");
+                                        break;
+
+                                }
 
                             }
 
@@ -822,7 +635,8 @@ namespace GettingReal
                         {
                             Console.Clear();
                             Console.WriteLine("Medarbejder Finn's ikke \n prøv igen");
-                            Rediger(ID);
+                            con.Close();
+                            Rediger(afdelingsID);
                         }
 
                     }
@@ -834,16 +648,16 @@ namespace GettingReal
             }
         }
 
-        public void Gemt(SqlCommand cmd)
+        public void Gem(SqlCommand handling)
         {
-            cmd.ExecuteNonQuery();
+            handling.ExecuteNonQuery();
             Console.WriteLine("Gemt!");
             Thread.Sleep(2000);
         }
 
-        public void Slet(int ID)
+        public void Slet(int afdelingsID)
         {
-            if (3 < ID)
+            if (3 < afdelingsID)
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
@@ -871,7 +685,7 @@ namespace GettingReal
                         Menu menu = new Menu();
                         switch (input)
                         {
-                            case ConsoleKey.Enter: menu.ShowMenu(ID); break;
+                            case ConsoleKey.Enter: con.Close(); menu.ShowMenu(afdelingsID); break;
 
                             default:
                                 Console.WriteLine("Default case");
@@ -886,8 +700,9 @@ namespace GettingReal
             }
             else
             {
+               
                 Menu menu = new Menu();
-                menu.ShowMenu(ID);
+                menu.ShowMenu(afdelingsID);
             }
         }
 
@@ -908,6 +723,7 @@ namespace GettingReal
                      cmd.Parameters.Add(new SqlParameter("@id", id));
 
                      cmd.ExecuteNonQuery();
+                    con.Close();
                     l.Login1();
                  }
                  catch(SqlException e)
