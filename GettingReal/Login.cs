@@ -27,7 +27,7 @@ namespace GettingReal
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     Console.WriteLine("Indtast Brugernavn \n");
                     string Brugernavn = Console.ReadLine();
-                    Console.WriteLine("\nIndtast Password \n");
+                    Console.WriteLine("\nIndtast Kodeord \n");
                     string Password = Console.ReadLine();
 
                     
