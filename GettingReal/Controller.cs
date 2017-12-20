@@ -613,218 +613,149 @@ namespace GettingReal
                 {
                     try
                     {
-
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("spFinnMedarbejder", con);
+                        SqlCommand cmd = new SqlCommand("spOpdater", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Vælg hvad der skal ændres \n");
+                        Console.WriteLine("1. Brugernavn");
+                        Console.WriteLine("2. Fornavn");
+                        Console.WriteLine("3. Efternavn");
+                        Console.WriteLine("4. Adresse");
+                        Console.WriteLine("5. Adresse linje 2");
+                        Console.WriteLine("6. By");
+                        Console.WriteLine("7. Post nummerr");
+                        Console.WriteLine("8. Telefon nummer");
+                        Console.WriteLine("9. Email");
+                        Console.WriteLine("10. Konto nummerr");
+                        Console.WriteLine("11. Registrerings nummer");
+                        Console.WriteLine("12. Afdelings ID");
+                        Console.WriteLine("13. Sundhedsoplysninger");
+                        Console.WriteLine("14. Jobtype");
+                        Console.WriteLine("15. Medarbejder nummer");
+                        Console.WriteLine("16. Kontakt navn");
+                        Console.WriteLine("17. Kontakt nummer");
+
+                        Console.WriteLine("\nTryk 'Enter' for at vende tilbage til menuen");
+                        var input = Console.ReadLine();
+
+                        Menu menu = new Menu();
+                        switch (input)
+                        {
+
+                            case "1":
+                                Console.WriteLine("Indtast Brugernavn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "2":
+                                Console.WriteLine("Indtast Fornavn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "3":
+                                Console.WriteLine("Indtast Efternavn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "4":
+                                Console.WriteLine("Indtast adresse\n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "5":
+                                Console.WriteLine("Indtast adresse linje 2 \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "6":
+                                Console.WriteLine("Indtast by \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "7":
+                                Console.WriteLine("Indtast post nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "8":
+                                Console.WriteLine("Indtast telefon nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "9":
+                                Console.WriteLine("Indtast email \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "10":
+                                Console.WriteLine("Indtast konto nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "11":
+                                Console.WriteLine("Indtast registrerings nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "12":
+                                Console.WriteLine("Indtast afdelings id \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "13":
+                                Console.WriteLine("Indtast sundhedsoplysninger \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "14":
+                                Console.WriteLine("Indtast jobtype \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+                            case "15":
+                                Console.WriteLine("Indtast medarbejder nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                                break;
+                            case "16":
+                                Console.WriteLine("Indtast kontakt navn \n");
+                                cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                                break;
+                            case "17":
+                                Console.WriteLine("Indtast kontakt nummer \n");
+                                cmd.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
+                                break;
+
+                            default:
+                                Console.WriteLine("Default case");
+                                break;
+
+                        }
+                        //Console.WriteLine("Indtast nyt brugernavn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
+                        //Console.WriteLine("Indtast fornavn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
+                        //Console.WriteLine("Indtast efternavn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny adresse \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Adresse", Console.ReadLine()));
+                        //Console.WriteLine("Indtast adresse linje 2 \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Adressel2", Console.ReadLine()));
+                        //Console.WriteLine("Indtast by \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@By", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny post nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Postnr", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt telefon nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny e-mail \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt konto nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Konto", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt registrerings nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Reg", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt afdelings ID \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nye sundhedsoplysninger \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Console.ReadLine()));
+                        //Console.WriteLine("Indtast ny jobtype \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt medarbejder nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt kontakt navn \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
+                        //Console.WriteLine("Indtast nyt kontakt nummer \n \n");
+                        //cmd.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
+
                         Console.Clear();
-                        Console.WriteLine("Indtast Medarbejder nr.");
-                        cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+
                         cmd.ExecuteNonQuery();
-
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                string UserName = reader["Brugernavn"].ToString();
-                                Console.WriteLine("Indtast Brugernavn");
-                                Console.WriteLine("Nuværende Brugernavn: " + UserName);
-                                string Username1 = Console.ReadLine();
-                                if(Username1 != "")
-                                {
-                                    UserName = Username1;
-                                }
-
-                                string Navn = reader["Navn"].ToString();
-                                Console.WriteLine("Indtast Navn");
-                                Console.WriteLine("Nuværende Navn: " + Navn);
-                                string Navn1 = Console.ReadLine();
-                                if (Navn1 != "")
-                                {
-                                    Navn = Navn1;
-                                }
-
-                                string Efternavn = reader["Efternavn"].ToString();
-                                Console.WriteLine("Indtast Efternavn");
-                                Console.WriteLine("Nuværende Efternavn: " + Efternavn);
-                                string Efternavn1 = Console.ReadLine();
-                                if (Efternavn1 != "")
-                                {
-                                    Efternavn = Efternavn1;
-                                }
-
-                                string Addresse = reader["Addresse"].ToString();
-                                Console.WriteLine("Indtast Addresse");
-                                Console.WriteLine("Nuværende Addresse: " + Addresse);
-                                string Addresse1 = Console.ReadLine();
-                                if (Addresse1 != "")
-                                {
-                                    Addresse = Addresse1;
-                                }
-
-                                string Addresse2 = reader["Addresse_l2"].ToString();
-                                Console.WriteLine("Indtast Addresse2");
-                                Console.WriteLine("Nuværende Addresse2: " + Addresse2);
-                                string Addresse21 = Console.ReadLine();
-                                if (Addresse21 != "")
-                                {
-                                    Addresse2 = Addresse21;
-                                }
-
-                                string Addresse_by = reader["Addresse_by"].ToString();
-                                Console.WriteLine("Indtast By");
-                                Console.WriteLine("Nuværende By: " + Addresse_by);
-                                string Addresse_by1 = Console.ReadLine();
-                                if (Addresse_by1 != "")
-                                {
-                                    Addresse_by = Addresse_by1;
-                                }
-
-                                string addresse_postnr = reader["addresse_postnr"].ToString();
-                                Console.WriteLine("Indtast Postnummer");
-                                Console.WriteLine("Nuværende Postnummer: " + addresse_postnr);
-                                string addresse_postnr1 = Console.ReadLine();
-                                if (addresse_postnr1 != "")
-                                {
-                                    addresse_postnr = addresse_postnr1;
-                                }
-
-                                string Tlf = reader["Tlf"].ToString();
-                                Console.WriteLine("Indtast telefonnummer");
-                                Console.WriteLine("Nuværende telefonnummer: " + Tlf);
-                                string Tlf1 = Console.ReadLine();
-                                if (Tlf1 != "")
-                                {
-                                    Tlf = Tlf1;
-                                }
-
-                                string Email = reader["Email"].ToString();
-                                Console.WriteLine("Indtast email");
-                                Console.WriteLine("Nuværende email: " + Email);
-                                string Email1 = Console.ReadLine();
-                                if (Email1 != "")
-                                {
-                                    Email = Email1;
-                                }
-
-                                string CPR_nr = reader["CPR_nr"].ToString();
-                                Console.WriteLine("Indtast CPR nr");
-                                Console.WriteLine("Nuværende CPR nr: " + CPR_nr);
-                                string CPR_nr1 = Console.ReadLine();
-                                if (CPR_nr1 != "")
-                                {
-                                    CPR_nr = CPR_nr1;
-                                }
-
-                                string konto_nr = reader["konto_nr"].ToString();
-                                Console.WriteLine("Indtast Konto nr");
-                                Console.WriteLine("Nuværende Konto nr: " + konto_nr);
-                                string konto_nr1 = Console.ReadLine();
-                                if (konto_nr1 != "")
-                                {
-                                    konto_nr = konto_nr1;
-                                }
-
-                                string reg_nr = reader["reg_nr"].ToString();
-                                Console.WriteLine("Indtast Registrerings nr");
-                                Console.WriteLine("Nuværende Registrerings nr: " + reg_nr);
-                                string reg_nr1 = Console.ReadLine();
-                                if (reg_nr1 != "")
-                                {
-                                    reg_nr = reg_nr1;
-                                }
-
-                                string Sundhedsoplysninger = reader["Sundhedsoplysninger"].ToString();
-                                Console.WriteLine("Indtast Sundhedsoplysninger");
-                                Console.WriteLine("Nuværende Sundhedsoplysninger: " + Sundhedsoplysninger);
-                                string Sundhedsoplysninger1 = Console.ReadLine();
-                                if (Sundhedsoplysninger1 != "")
-                                {
-                                    Sundhedsoplysninger = Sundhedsoplysninger1;
-                                }
-
-                                string JobType = reader["JobType"].ToString();
-                                Console.WriteLine("Indtast JobType");
-                                Console.WriteLine("Nuværende JobType: " + JobType);
-                                string JobType1 = Console.ReadLine();
-                                if (JobType1 != "")
-                                {
-                                    JobType = JobType1;
-                                }
-
-                                string MedarbejderNr = reader["MedarbejderNr"].ToString();
-                                Console.WriteLine("Indtast MedarbejderNr");
-                                Console.WriteLine("Nuværende MedarbejderNr: " + MedarbejderNr);
-                                string MedarbejderNr1 = Console.ReadLine();
-                                if (MedarbejderNr1 != "")
-                                {
-                                    MedarbejderNr = MedarbejderNr1;
-                                }
-
-                                string KontaktPerson = reader["KontaktPerson"].ToString();
-                                Console.WriteLine("Indtast Kontaktperson");
-                                Console.WriteLine("Nuværende Kontaktperson: " + KontaktPerson);
-                                string KontaktPerson1 = Console.ReadLine();
-                                if (KontaktPerson1 != "")
-                                {
-                                    KontaktPerson = KontaktPerson1;
-                                }
-
-                                string KontaktNr = reader["KontaktNr"].ToString();
-                                Console.WriteLine("Indtast kontaktpersons telefonnummer");
-                                Console.WriteLine("Nuværende kontaktpersons telefonnummer: " + KontaktNr);
-                                string KontaktNr1 = Console.ReadLine();
-                                if (KontaktNr1 != "")
-                                {
-                                    KontaktNr = KontaktNr1;
-                                }
-
-                                string AfdelingsId = reader["AfdelingsID"].ToString();
-                                Console.WriteLine("Indtast kontaktpersons telefonnummer");
-                                Console.WriteLine("Nuværende kontaktpersons telefonnummer: " + AfdelingsId);
-                                string AfdelingsId1 = Console.ReadLine();
-                                if (KontaktNr1 != "")
-                                {
-                                    AfdelingsId = AfdelingsId1;
-                                }
-                                reader.Close();
-
-                                SqlCommand cmd2 = new SqlCommand("spOpdater", con);
-                                cmd2.CommandType = System.Data.CommandType.StoredProcedure;
-                                cmd2.Parameters.Add(new SqlParameter("@BrugerNavn", UserName));
-                                cmd2.Parameters.Add(new SqlParameter("@Fornavn", Navn));
-                                cmd2.Parameters.Add(new SqlParameter("@Efternavn", Efternavn));
-                                cmd2.Parameters.Add(new SqlParameter("@Adresse", Addresse));
-                                cmd2.Parameters.Add(new SqlParameter("@Adressel2", Addresse2));
-                                cmd2.Parameters.Add(new SqlParameter("@By", Addresse_by));
-                                cmd2.Parameters.Add(new SqlParameter("@Postnr", addresse_postnr));
-                                cmd2.Parameters.Add(new SqlParameter("@Tlf", Tlf));
-                                cmd2.Parameters.Add(new SqlParameter("@Email", Email));
-                                cmd2.Parameters.Add(new SqlParameter("@CPR", CPR_nr));
-                                cmd2.Parameters.Add(new SqlParameter("@Konto", konto_nr));
-                                cmd2.Parameters.Add(new SqlParameter("@Reg", reg_nr));
-                                cmd2.Parameters.Add(new SqlParameter("@AfdelingsID", AfdelingsId));
-                                cmd2.Parameters.Add(new SqlParameter("@Sundhedsoplysninger", Sundhedsoplysninger));
-                                cmd2.Parameters.Add(new SqlParameter("@JobType", JobType));
-                                cmd2.Parameters.Add(new SqlParameter("@MedarbejderNr", MedarbejderNr));
-                                cmd2.Parameters.Add(new SqlParameter("@KontaktPerson", KontaktPerson));
-                                cmd2.Parameters.Add(new SqlParameter("@KontaktNr", KontaktNr));
-                                cmd2.ExecuteNonQuery();
-
-                                Menu menu = new Menu();
-                                menu.ShowMenu(ID);
-
-                            }
-
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Medarbejder Finn's ikke \n prøv igen");
-                            Rediger(ID);
-                        }
-
                     }
                     catch (SqlException e)
                     {
@@ -891,6 +822,7 @@ namespace GettingReal
             }
         }
 
+
         public void SkiftPassword(int id, string brugernavn, string kodeord, int AfdelingsID)
         {
               Menu menu = new Menu();
@@ -916,6 +848,51 @@ namespace GettingReal
                  }
              }
         }
-        
+        public bool Move()
+        {
+            int col = 7;
+            int row = 7;
+            Console.SetCursorPosition(col, row);    //Places the "*" before the loop    //In column 7, row 7
+            Console.Write("*");
+            Console.SetCursorPosition(col, row);
+            while (true)
+            {
+                ConsoleKeyInfo info = Console.ReadKey(true);
+                if (info.Key == ConsoleKey.UpArrow)       //Compares the given info in ReadKey to the given ConsoleKey ("W")
+                {
+                    Console.Write(" ");
+                    Debug.Print("W");
+                    row--;
+                }
+                if (info.Key == ConsoleKey.DownArrow)
+                {
+                    Console.Write(" ");
+                    Debug.Print("S");
+                    row++;
+                }
+
+                if (info.Key == ConsoleKey.LeftArrow)
+                {
+                    Console.Write(" ");
+                    Debug.Print("A");
+                    col--;
+                }
+
+                if (info.Key == ConsoleKey.RightArrow)
+                {
+                    Console.Write(" ");
+                    Debug.Print("D");       //Writes a message followed by a line terminator to the trace listeners in the Listeners collection.
+                    col++;
+                }
+                if (Console.WindowTop >= 180)
+
+                    //Debug.Print & Console.Writeline
+                    //Debug writes the message to the Output > Debug. Console.WriteLine writes the message to the standard output (Console).
+
+                    Console.SetCursorPosition(col, row);    //Places the "*" after the loop
+                Console.Write("*");
+                Console.SetCursorPosition(col, row);
+            }
+        }
     }
 }
