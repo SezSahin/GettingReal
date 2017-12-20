@@ -225,7 +225,7 @@ namespace GettingReal
                     {
 
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("spSøg4P", con);
+                        SqlCommand cmd = new SqlCommand("spSøg5P", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add(new SqlParameter("@Keyword", ord[0]));
                         cmd.Parameters.Add(new SqlParameter("@Keyword2", ord[1]));
@@ -283,7 +283,8 @@ namespace GettingReal
                                 }
                                 else
                                 {
-                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
+                                    Console.WriteLine("\n - Fornavn " + FirstName + "\n - Efternavn " + LastName + 
+                                                      "\n - Telefon nr: " + PhoneNumber + "\n - Email: " + Email);
                                 }
                             }
                         }
@@ -532,6 +533,15 @@ namespace GettingReal
                                     reg_nr = reg_nr1;
                                 }
 
+                                string AfdelingsId = reader["AfdelingsID"].ToString();
+                                Console.WriteLine("Indtast afdelings id");
+                                Console.WriteLine("Nuværende afdelings id: " + AfdelingsId);
+                                string AfdelingsId1 = Console.ReadLine();
+                                if (AfdelingsId1 != "")
+                                {
+                                    AfdelingsId = AfdelingsId1;
+                                }
+
                                 string Sundhedsoplysninger = reader["Sundhedsoplysninger"].ToString();
                                 Console.WriteLine("Indtast Sundhedsoplysninger");
                                 Console.WriteLine("Nuværende Sundhedsoplysninger: " + Sundhedsoplysninger);
@@ -575,15 +585,6 @@ namespace GettingReal
                                 if (KontaktNr1 != "")
                                 {
                                     KontaktNr = KontaktNr1;
-                                }
-
-                                string AfdelingsId = reader["AfdelingsID"].ToString();
-                                Console.WriteLine("Indtast kontaktpersons telefonnummer");
-                                Console.WriteLine("Nuværende kontaktpersons telefonnummer: " + AfdelingsId);
-                                string AfdelingsId1 = Console.ReadLine();
-                                if (KontaktNr1 != "")
-                                {
-                                    AfdelingsId = AfdelingsId1;
                                 }
                                 reader.Close();
 
@@ -694,7 +695,7 @@ namespace GettingReal
                     }
                     catch (SqlException e)
                     {
-                        Console.WriteLine("Dårligt lavet.." + e.Message + "\n");
+                        Console.WriteLine("Kunne ikke finde bruger! " + e.Message + "\n");
                     }
                 }
             }
