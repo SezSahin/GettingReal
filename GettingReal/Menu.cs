@@ -48,15 +48,65 @@ namespace GettingReal
                         break;
                     case "3":
                         Console.WriteLine("Opret medarbejder \n");
-                        controller.Opret(afdelingsID);
+                        Console.WriteLine("Indtast Brugernavn \n");
+                        string newuser = Console.ReadLine();  
+                        Console.WriteLine("Indtast Pasword \n");
+                        string  newpassword = Console.ReadLine();
+                        Console.WriteLine("Indtast Navn og mellem navn \n");
+                        string firstname = Console.ReadLine();
+                        Console.WriteLine("Indtast Efternavn \n");
+                        string lastname = Console.ReadLine();
+                        Console.WriteLine("Indtast Addresselinje 1 \n");
+                        string address1 = Console.ReadLine();
+                        Console.WriteLine("Indtast Addresselinje 2 \n");
+                        string address2 = Console.ReadLine();
+                        Console.WriteLine("Indtast Addresse By\n");
+                        string city = Console.ReadLine();
+                        Console.WriteLine("Indtast Post nr.\n");
+                        string zipnr = Console.ReadLine();
+                        Console.WriteLine("Indtast Telefon nr.\n");
+                        string telephonenr = Console.ReadLine();
+                        Console.WriteLine("Indtast e-mail \n \n");
+                        string email = Console.ReadLine();
+                        Console.WriteLine("Indtast CPR \n");
+                        string cpr = Console.ReadLine();
+                        Console.WriteLine("Indtast Konto nr. \n");
+                        string accountnr = Console.ReadLine();
+                        Console.WriteLine("Indtast Reg nr. \n");
+                        string reqnr= Console.ReadLine();
+                        Console.WriteLine("Indtast AfdelingsID \n");
+                        string departmentnr= Console.ReadLine();
+                        Console.WriteLine("Indtast Sundhedsoplysninger \n");
+                        string health= Console.ReadLine();
+                        Console.WriteLine("Indtast Jobtype \n");
+                        string jobtype = Console.ReadLine();
+                        Console.WriteLine("Indtast Medarbejder nr. \n");
+                        string employmentnr= Console.ReadLine();
+                        Console.WriteLine("Indtast Kontakt navn \n");
+                        string contactperson= Console.ReadLine();
+                        Console.WriteLine("Indtast Kontakt nr. \n");
+                        string ContactTelephoneNr= Console.ReadLine();
+                        controller.Opret(newuser, newpassword, firstname, lastname,
+                            address1, address2, city, zipnr, telephonenr, email,
+                            cpr, accountnr, reqnr, departmentnr, health, jobtype, 
+                            employmentnr, contactperson, ContactTelephoneNr, 
+                            afdelingsID);
                         break;
                     case "4":
                         Console.WriteLine("Rediger medarbejder \n");
-                        controller.Rediger(afdelingsID);
+                        Console.WriteLine("Indtast Medarbejder nr.");
+                        string employeenr = Console.ReadLine();
+                        controller.Rediger(employeenr, afdelingsID);
                         break;
                     case "5":
                         Console.WriteLine("Slet medarbejder \n");
-                        controller.Slet(afdelingsID);
+                        Console.WriteLine("\nSlet bruger med fornavn: \n");
+                        firstname = Console.ReadLine();
+                        Console.WriteLine("\nSlet bruger med efternavn: \n");
+                        lastname = Console.ReadLine();
+                        Console.WriteLine("\nSlet bruger med medarbejder nummer: \n");
+                        employeenr = Console.ReadLine();
+                        controller.Slet(firstname, lastname, employeenr, afdelingsID);
                         break;
                     case "6":
                         l.Login1();
