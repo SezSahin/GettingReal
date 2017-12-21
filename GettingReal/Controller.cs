@@ -311,7 +311,12 @@ namespace GettingReal
         }
 
         
-        public void Opret(int afdelingsID)
+        public void Opret(string newuser, string newpassword, string firstname, 
+            string lastname, string address1, string address2, string city, 
+            string zipnr, string telephonenr, string email, string cpr, 
+            string accountnr, string reqnr, string departmentnr, string health, 
+            string jobtype, string employeenr, string contactperson, 
+            string ContactTelephoneNr, int afdelingsID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -323,44 +328,25 @@ namespace GettingReal
                         con.Open();
                         SqlCommand handling = new SqlCommand("spOpretBruger", con);
                         handling.CommandType = System.Data.CommandType.StoredProcedure;
-                        Console.WriteLine("Indtast Brugernavn \n");
-                        handling.Parameters.Add(new SqlParameter("@Brugernavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast Pasword \n");
-                        handling.Parameters.Add(new SqlParameter("@Password", Console.ReadLine()));
-                        Console.WriteLine("Indtast Navn og mellem navn \n");
-                        handling.Parameters.Add(new SqlParameter("@Navn", Console.ReadLine()));
-                        Console.WriteLine("Indtast Efternavn \n");
-                        handling.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
-                        Console.WriteLine("Indtast Addresselinje 1 \n");
-                        handling.Parameters.Add(new SqlParameter("@Addresse", Console.ReadLine()));
-                        Console.WriteLine("Indtast Addresselinje 2 \n");
-                        handling.Parameters.Add(new SqlParameter("@Addresse_l2", Console.ReadLine()));
-                        Console.WriteLine("Indtast Addresse By\n");
-                        handling.Parameters.Add(new SqlParameter("@Addresse_by", Console.ReadLine()));
-                        Console.WriteLine("Indtast Post nr.\n");
-                        handling.Parameters.Add(new SqlParameter("@Addresse_postnr", Console.ReadLine()));
-                        Console.WriteLine("Indtast Telefon nr.\n");
-                        handling.Parameters.Add(new SqlParameter("@Tlf", Console.ReadLine()));
-                        Console.WriteLine("Indtast e-mail \n \n");
-                        handling.Parameters.Add(new SqlParameter("@Email", Console.ReadLine()));
-                        Console.WriteLine("Indtast CPR \n");
-                        handling.Parameters.Add(new SqlParameter("@CPR_nr", Console.ReadLine()));
-                        Console.WriteLine("Indtast Konto nr. \n");
-                        handling.Parameters.Add(new SqlParameter("@konto_nr", Console.ReadLine()));
-                        Console.WriteLine("Indtast Reg nr. \n");
-                        handling.Parameters.Add(new SqlParameter("@reg_nr", Console.ReadLine()));
-                        Console.WriteLine("Indtast AfdelingsID \n");
-                        handling.Parameters.Add(new SqlParameter("@AfdelingsID", Console.ReadLine()));
-                        Console.WriteLine("Indtast Sundhedsoplysninger \n");
-                        handling.Parameters.Add(new SqlParameter("@Sunhedsoplysninger", Console.ReadLine()));
-                        Console.WriteLine("Indtast Jobtype \n");
-                        handling.Parameters.Add(new SqlParameter("@JobType", Console.ReadLine()));
-                        Console.WriteLine("Indtast Medarbejder nr. \n");
-                        handling.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
-                        Console.WriteLine("Indtast Kontakt navn \n");
-                        handling.Parameters.Add(new SqlParameter("@KontaktPerson", Console.ReadLine()));
-                        Console.WriteLine("Indtast Kontakt nr. \n");
-                        handling.Parameters.Add(new SqlParameter("@KontaktNr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@Brugernavn", newuser));
+                        handling.Parameters.Add(new SqlParameter("@Password", newpassword));
+                        handling.Parameters.Add(new SqlParameter("@Navn", firstname));
+                        handling.Parameters.Add(new SqlParameter("@Efternavn", lastname));
+                        handling.Parameters.Add(new SqlParameter("@Addresse", address1));
+                        handling.Parameters.Add(new SqlParameter("@Addresse_l2", address2));
+                        handling.Parameters.Add(new SqlParameter("@Addresse_by", city));
+                        handling.Parameters.Add(new SqlParameter("@Addresse_postnr", zipnr));
+                        handling.Parameters.Add(new SqlParameter("@Tlf", telephonenr));
+                        handling.Parameters.Add(new SqlParameter("@Email", email));
+                        handling.Parameters.Add(new SqlParameter("@CPR_nr", cpr));
+                        handling.Parameters.Add(new SqlParameter("@konto_nr", accountnr));
+                        handling.Parameters.Add(new SqlParameter("@reg_nr", reqnr));
+                        handling.Parameters.Add(new SqlParameter("@AfdelingsID", departmentnr));
+                        handling.Parameters.Add(new SqlParameter("@Sunhedsoplysninger", health));
+                        handling.Parameters.Add(new SqlParameter("@JobType", jobtype));
+                        handling.Parameters.Add(new SqlParameter("@MedarbejderNr", employeenr));
+                        handling.Parameters.Add(new SqlParameter("@KontaktPerson", contactperson));
+                        handling.Parameters.Add(new SqlParameter("@KontaktNr", ContactTelephoneNr));
 
 
                         Console.Clear();
@@ -402,7 +388,7 @@ namespace GettingReal
             }
         }
 
-        public void Rediger(int afdelingsID)
+        public void Rediger(string employeenr, int afdelingsID)
         {
             if (3 < afdelingsID)
             {
@@ -415,8 +401,7 @@ namespace GettingReal
                         SqlCommand handling = new SqlCommand("spFinnMedarbejder", con);
                         handling.CommandType = System.Data.CommandType.StoredProcedure;
                         Console.Clear();
-                        Console.WriteLine("Indtast Medarbejder nr.");
-                        handling.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+                        handling.Parameters.Add(new SqlParameter("@MedarbejderNr", employeenr));
                         handling.ExecuteNonQuery();
 
                         SqlDataReader reader = handling.ExecuteReader();
@@ -636,7 +621,8 @@ namespace GettingReal
                             Console.Clear();
                             Console.WriteLine("Medarbejder Finn's ikke \n prøv igen");
                             con.Close();
-                            Rediger(afdelingsID);
+                            Menu menu = new Menu();
+                            menu.ShowMenu(afdelingsID);
                         }
 
                     }
@@ -655,7 +641,7 @@ namespace GettingReal
             Thread.Sleep(2000);
         }
 
-        public void Slet(int afdelingsID)
+        public void Slet(string firstname, string lastname, string employeenr, int afdelingsID)
         {
             if (3 < afdelingsID)
             {
@@ -666,12 +652,9 @@ namespace GettingReal
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spSletBruger", con);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        Console.WriteLine("\nSlet bruger med fornavn: \n");
-                        cmd.Parameters.Add(new SqlParameter("@Fornavn", Console.ReadLine()));
-                        Console.WriteLine("\nSlet bruger med efternavn: \n");
-                        cmd.Parameters.Add(new SqlParameter("@Efternavn", Console.ReadLine()));
-                        Console.WriteLine("\nSlet bruger med medarbejder nummer: \n");
-                        cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", Console.ReadLine()));
+                        cmd.Parameters.Add(new SqlParameter("@Fornavn", firstname));
+                        cmd.Parameters.Add(new SqlParameter("@Efternavn", lastname));
+                        cmd.Parameters.Add(new SqlParameter("@MedarbejderNr", employeenr));
 
                         Console.Clear();
 
